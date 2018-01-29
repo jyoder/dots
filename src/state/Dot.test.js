@@ -1,4 +1,4 @@
-import Dot from './Dot';
+import Dot from 'state/Dot';
 
 test('createStandard creates a dot with standard type', () => {
     const dot = Dot.createStandard();

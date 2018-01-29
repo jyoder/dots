@@ -1,4 +1,4 @@
-import Player from './Player';
+import Player from 'state/Player';
 
 test('constructor initializes playerId, playerName, and color', () => {
     const player = new Player(1, 'Gordon', 'red');
