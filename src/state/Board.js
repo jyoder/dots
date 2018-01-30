@@ -1,6 +1,6 @@
 import Dot from 'state/Dot';
 
-class Board {
+export default class Board {
     static create(width, height) {
         return new Board(
             this._mapWithIndex(Array(height).fill(), (y) => {
@@ -67,5 +67,3 @@ class Board {
         return dots.map((row) => Array.from(row));
     }
 }
-
-export default Board;

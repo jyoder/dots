@@ -3,7 +3,7 @@ const BOTTOM_TYPE = 'bottom';
 const RIGHT_TYPE = 'right';
 const BOTTOM_RIGHT_TYPE = 'bottomRight';
 
-class Dot {
+export default class Dot {
     static createStandard() {
         return new Dot('standard', null, null);
     }
@@ -71,5 +71,3 @@ class Dot {
         );
     }
 }
-
-export default Dot;

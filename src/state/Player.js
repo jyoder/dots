@@ -1,4 +1,4 @@
-class Player {
+export default class Player {
     constructor(playerId, playerName, color) {
         this._playerId = playerId;
         this._playerName = playerName;
@@ -17,5 +17,3 @@ class Player {
         return this._color;
     }
 }
-
-export default Player;
