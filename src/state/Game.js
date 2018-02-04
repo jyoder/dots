@@ -23,6 +23,10 @@ export default class Game {
         return this._players[this._activePlayerIndex];
     }
 
+    dotAt(x, y) {
+        return this._board.dotAt(x, y);
+    }
+
     drawTopLine(x, y) {
         const board = this._board.drawTopLine(this.activePlayer(), x, y);
         return this._nextGameState(board);

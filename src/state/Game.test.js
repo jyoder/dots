@@ -1,31 +1,29 @@
 import Game from 'state/Game';
 
 describe('create', () => {
-    it('returns a game with the specified width, height, and players', () => {
+    it('returns a game with the specified width, height', () => {
         const game = Game.create(4, 5, ['player']);
         expect(game.width()).toBe(4);
         expect(game.height()).toBe(5);
+    });
+
+    it('returns a game where the first specified player is the active player', () => {
+        const game = Game.create(4, 5, ['player']);
         expect(game.activePlayer()).toEqual('player');
     });
 });
 
 describe('width', () => {
     it('returns the width of the game board', () => {
-        const mockBoard = { width: jest.fn(() => 2) };
-        const game = new Game(mockBoard, [], 0);
-    
-        expect(game.width()).toBe(2);
-        expect(mockBoard.width).toHaveBeenCalled();
+        const game = Game.create(4, 5, ['player']);
+        expect(game.width()).toBe(4);
     });
 });
 
 describe('height', () => {
     it('returns the height of the game board', () => {
-        const mockBoard = { height: jest.fn(() => 3) };
-        const game = new Game(mockBoard, [], 0);
-    
-        expect(game.height()).toBe(3);
-        expect(mockBoard.height).toHaveBeenCalledTimes(1);
+        const game = Game.create(4, 5, ['player']);  
+        expect(game.height()).toBe(5);
     });
 });
 
@@ -36,70 +34,78 @@ describe('activePlayer', () => {
     });
 });
 
-describe('drawTopLine', () => {
-    it('returns a new game where the active player is the next one in our list', () => {
-        const game = new Game({ drawTopLine: jest.fn() }, ['player1', 'player2'], 0);
+describe('dotAt', () => {
+    it('returns the dot at the specified location', () => {
+        const game = Game.create(3, 3, ['player']);
+        
+        expect(game.dotAt(0, 0).isStandard()).toBeTruthy();
+        expect(game.dotAt(1, 0).isStandard()).toBeTruthy();
+        expect(game.dotAt(2, 0).isRight()).toBeTruthy();
+        expect(game.dotAt(0, 1).isStandard()).toBeTruthy();
+        expect(game.dotAt(1, 1).isStandard()).toBeTruthy();
+        expect(game.dotAt(2, 1).isRight()).toBeTruthy();
+        expect(game.dotAt(0, 2).isBottom()).toBeTruthy();
+        expect(game.dotAt(1, 2).isBottom()).toBeTruthy();
+        expect(game.dotAt(2, 2).isBottomRight()).toBeTruthy();
+    });
+});
 
+describe('drawTopLine', () => {
+    it('returns a new game', () => {
+        const game = Game.create(3, 3, ['player1']);
+        
+        const nextGame = game.drawTopLine(1, 1);
+        expect(nextGame).not.toBe(game);
+    });
+
+    it('returns a game where the active player is the next one in our list', () => {
+        const game = Game.create(3, 3, ['player1', 'player2']);
+        
         const nextGame = game.drawTopLine(1, 1);
         expect(nextGame.activePlayer()).toBe('player2');
     });
 
-    it('returns a new game where the first player succeeds the last player', () => {
-        const game = new Game({ drawTopLine: jest.fn() }, ['player1', 'player2'], 1);
+    it('returns a game where the first player succeeds the last player', () => {
+        const game = Game.create(3, 3, ['player1', 'player2']);
 
-        const nextGame = game.drawTopLine(1, 1);
+        const nextGame = game.drawTopLine(1, 1).drawTopLine(1, 2);
         expect(nextGame.activePlayer()).toBe('player1');
     });
 
-    it('returns a new game containing new board', () => {
-        const nextMockBoard = { width: () => 42 };
-        const mockBoard = { drawTopLine: jest.fn(() => nextMockBoard) };
-        const game = new Game(mockBoard, ['player1'], 0);
-        
-        const nextGame = game.drawTopLine(5, 13);
-        expect(nextGame.width()).toBe(42);
-    });
+    it('draws the top line for the active player at the specified location on the board', () => {
+        const game = Game.create(3, 3, ['player']);
 
-    it('draws the top line for the active player at the specified coordinates on the board', () => {
-        const mockBoard = { drawTopLine: jest.fn() };
-        const game = new Game(mockBoard, ['player1', 'player2'], 0);
-        
-        game.drawTopLine(5, 13);
-        expect(mockBoard.drawTopLine).toHaveBeenCalledTimes(1);
-        expect(mockBoard.drawTopLine).toHaveBeenCalledWith('player1', 5, 13);
+        const nextGame = game.drawTopLine(2, 1);
+        expect(nextGame.dotAt(2, 1).topLineOwner()).toEqual('player');
     });
 });
 
 describe('drawLeftLine', () => {
-    it('returns a new game where the active player is the next one in our list', () => {
-        const game = new Game({ drawLeftLine: jest.fn() }, ['player1', 'player2'], 0);
+    it('returns a new game', () => {
+        const game = Game.create(3, 3, ['player1']);
+        
+        const nextGame = game.drawLeftLine(1, 1);
+        expect(nextGame).not.toBe(game);
+    });
 
+    it('returns a game where the active player is the next one in our list', () => {
+        const game = Game.create(3, 3, ['player1', 'player2']);
+        
         const nextGame = game.drawLeftLine(1, 1);
         expect(nextGame.activePlayer()).toBe('player2');
     });
 
-    it('returns a new game where the first player succeeds the last player', () => {
-        const game = new Game({ drawLeftLine: jest.fn() }, ['player1', 'player2'], 1);
+    it('returns a game where the first player succeeds the last player', () => {
+        const game = Game.create(3, 3, ['player1', 'player2']);
 
-        const nextGame = game.drawLeftLine(1, 1);
+        const nextGame = game.drawLeftLine(1, 1).drawTopLine(1, 2);
         expect(nextGame.activePlayer()).toBe('player1');
     });
 
-    it('returns a new game containing new board', () => {
-        const nextMockBoard = { width: () => 42 };
-        const mockBoard = { drawLeftLine: jest.fn(() => nextMockBoard) };
-        const game = new Game(mockBoard, ['player1'], 0);
-        
-        const nextGame = game.drawLeftLine(5, 13);
-        expect(nextGame.width()).toBe(42);
-    });
+    it('draws the left line for the active player at the specified location on the board', () => {
+        const game = Game.create(3, 3, ['player']);
 
-    it('draws the left line for the active player at the specified coordinates on the board', () => {
-        const mockBoard = { drawLeftLine: jest.fn() };
-        const game = new Game(mockBoard, ['player1', 'player2'], 0);
-        
-        const nextGame = game.drawLeftLine(5, 13);
-        expect(mockBoard.drawLeftLine).toHaveBeenCalledTimes(1);
-        expect(mockBoard.drawLeftLine).toHaveBeenCalledWith('player1', 5, 13);
+        const nextGame = game.drawLeftLine(2, 1);
+        expect(nextGame.dotAt(2, 1).leftLineOwner()).toEqual('player');
     });
 });
