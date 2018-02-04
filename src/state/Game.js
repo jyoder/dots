@@ -1,4 +1,10 @@
+import Board from 'state/Board';
+
 export default class Game {
+    static create(width, height, players) {
+        return new Game(Board.create(width, height), players, 0);
+    }
+
     constructor(board, players, activePlayerIndex) {
         this._board = board;
         this._players = players;

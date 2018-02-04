@@ -1,5 +1,14 @@
 import Game from 'state/Game';
 
+describe('create', () => {
+    it('returns a game with the specified width, height, and players', () => {
+        const game = Game.create(4, 5, ['player']);
+        expect(game.width()).toBe(4);
+        expect(game.height()).toBe(5);
+        expect(game.activePlayer()).toEqual('player');
+    });
+});
+
 describe('width', () => {
     it('returns the width of the game board', () => {
         const mockBoard = { width: jest.fn(() => 2) };
