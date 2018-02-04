@@ -45,6 +45,10 @@ export default class Board {
         return this._dots.length;
     }
 
+    dotAt(x, y) {
+        return this._dots[y][x];
+    }
+
     forEachRow(func) {
         this._dots.forEach((row) => func(row));
     }

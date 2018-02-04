@@ -9,17 +9,16 @@ describe('create', () => {
 
     it('returns a board with the correct dot types', () => {
         const board = Board.create(3, 3);
-    
-        const dots = [];
-        board.forEachRow((row) => dots.push(row));
 
-        expect(dots[0][0].isStandard()).toBe(true);
-        expect(dots[0][1].isStandard()).toBe(true);
-        expect(dots[0][2].isRight()).toBe(true);
-        expect(dots[1][0].isStandard()).toBe(true);
-        expect(dots[1][1].isStandard()).toBe(true);
-        expect(dots[1][2].isRight()).toBe(true);
-        expect(dots[2][0].isBottom()).toBe(true);
+        expect(board.dotAt(0, 0).isStandard()).toBeTruthy();
+        expect(board.dotAt(1, 0).isStandard()).toBeTruthy();
+        expect(board.dotAt(2, 0).isRight()).toBeTruthy();
+        expect(board.dotAt(0, 1).isStandard()).toBeTruthy();
+        expect(board.dotAt(1, 1).isStandard()).toBeTruthy();
+        expect(board.dotAt(2, 1).isRight()).toBeTruthy();
+        expect(board.dotAt(0, 2).isBottom()).toBeTruthy();
+        expect(board.dotAt(1, 2).isBottom()).toBeTruthy();
+        expect(board.dotAt(2, 2).isBottomRight()).toBeTruthy();
     });
 });
 
@@ -34,6 +33,13 @@ describe('height', () => {
     it('returns the number of rows on the board', () => {
         const board = new Board([[1, 1, 1, 1]]);
         expect(board.height()).toBe(1);
+    });
+});
+
+describe('dotAt', () => {
+    it('returns the dot at the specified location', () => {
+        const board = new Board([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+        expect(board.dotAt(2, 1)).toBe(6);
     });
 });
 
@@ -62,11 +68,8 @@ describe('drawTopLine', () => {
     it('returns a board with the specified line drawn', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawTopLine('player', 2, 2);
-        const rows = [];
-        board2.forEachRow((row) => rows.push(row));
-    
-        expect(rows[2][2].topLineOwner()).toBe('player');
+        const board2 = board1.drawTopLine('player', 2, 2);    
+        expect(board2.dotAt(2, 2).topLineOwner()).toBe('player');
     });
 });
 
@@ -82,10 +85,7 @@ describe('drawLeftLine', () => {
     it('returns a board with the specified line drawn', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawLeftLine('player', 2, 2);
-        const rows = [];
-        board2.forEachRow((row) => rows.push(row));
-    
-        expect(rows[2][2].leftLineOwner()).toBe('player');
+        const board2 = board1.drawLeftLine('player', 2, 2);    
+        expect(board2.dotAt(2, 2).leftLineOwner()).toBe('player');
     });
 });
