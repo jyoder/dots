@@ -28,13 +28,21 @@ export default class Game {
     }
 
     drawTopLine(x, y) {
-        const board = this._board.drawTopLine(this.activePlayer(), x, y);
-        return this._nextGameState(board);
+        if(!this.dotAt(x, y).topLineOwner()) {
+            const board = this._board.drawTopLine(this.activePlayer(), x, y);
+            return this._nextGameState(board);
+        } else {
+            return null;
+        }
     }
 
     drawLeftLine(x, y) {
-        const board = this._board.drawLeftLine(this.activePlayer(), x, y);
-        return this._nextGameState(board);
+        if(!this.dotAt(x, y).leftLineOwner()) {
+            const board = this._board.drawLeftLine(this.activePlayer(), x, y);
+            return this._nextGameState(board);
+        } else {
+            return null;
+        }
     }
 
     _nextGameState(board) {

@@ -88,6 +88,16 @@ describe('drawTopLine', () => {
         const nextGame = game.drawTopLine(2, 1);
         expect(nextGame.dotAt(2, 1).topLineOwner()).toEqual('player');
     });
+
+    it('returns null if the specified line has already been drawn', () => {
+        const game = Game.create(3, 3, ['player']).drawTopLine(2, 1);
+        expect(game.drawTopLine(2, 1)).toBeNull();
+    });
+
+    it('ignores the state of the left line', () => {
+        const game = Game.create(3, 3, ['player']);
+        expect(game.drawLeftLine(2, 1).drawTopLine(2, 1)).not.toBeNull();
+    });
 });
 
 describe('drawLeftLine', () => {
@@ -117,5 +127,15 @@ describe('drawLeftLine', () => {
 
         const nextGame = game.drawLeftLine(2, 1);
         expect(nextGame.dotAt(2, 1).leftLineOwner()).toEqual('player');
+    });
+
+    it('returns null if the specified line has already been drawn', () => {
+        const game = Game.create(3, 3, ['player']).drawLeftLine(2, 1);
+        expect(game.drawLeftLine(2, 1)).toBeNull();
+    });
+
+    it('ignores the state of the top line', () => {
+        const game = Game.create(3, 3, ['player']);
+        expect(game.drawTopLine(2, 1).drawLeftLine(2, 1)).not.toBeNull();
     });
 });
