@@ -49,10 +49,6 @@ export default class Board {
         return this._dots[y][x];
     }
 
-    forEachRow(func) {
-        this._dots.forEach((row) => func(row));
-    }
-
     drawTopLine(player, x, y) {
         return this._replaceDot(this._dots[y][x].drawTopLine(player), x, y);
     }

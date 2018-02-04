@@ -43,19 +43,6 @@ describe('dotAt', () => {
     });
 });
 
-describe('forEachRow', () => {
-    it('iterates over each row on the board', () => {
-        const row1 = [1, 2, 3, 4];
-        const row2 = [5, 6, 7, 8];
-
-        const rows = [];
-        const board = new Board([row1, row2]);
-        board.forEachRow((row) => rows.push(row));
-
-        expect(rows).toEqual([row1, row2]);
-    });
-});
-
 describe('drawTopLine', () => {
     it('returns a new board', () => {
         const board1 = Board.create(3, 3);
