@@ -1,4 +1,5 @@
 import Game from 'state/Game';
+import Board from 'state/Board';
 
 describe('create', () => {
     it('returns a game with the specified width, height', () => {
@@ -10,6 +11,15 @@ describe('create', () => {
     it('returns a game where the first specified player is the active player', () => {
         const game = Game.create(4, 5, ['player']);
         expect(game.activePlayer()).toEqual('player');
+    });
+});
+
+describe('constructor', () => {
+    it('returns a game initialized with the specified properties', () => {
+        const game = new Game(Board.create(2, 3), ['player1', 'player2'], 1);
+        expect(game.width()).toBe(2);
+        expect(game.height()).toBe(3);
+        expect(game.activePlayer()).toEqual('player2');
     });
 });
 
