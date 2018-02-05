@@ -1,4 +1,5 @@
 import Dot from 'state/Dot';
+import Cell from 'state/Cell';
 
 export default class Board {
     static create(width, height) {
@@ -47,6 +48,14 @@ export default class Board {
 
     dotAt(x, y) {
         return this._dots[y][x];
+    }
+
+    ownerAt(x, y) {
+        if(x < this.width() - 1 && y < this.height() - 1) {
+            return (new Cell(this.dotAt(x, y), this.dotAt(x + 1, y), this.dotAt(x, y + 1))).owner();
+        } else {
+            return null;
+        }
     }
 
     drawTopLine(player, x, y) {

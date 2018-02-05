@@ -1,4 +1,5 @@
 import Board from 'state/Board';
+import Player from 'state/Player';
 
 describe('create', () => {
     it('returns a board with the specified dimensions', () => {
@@ -40,6 +41,33 @@ describe('dotAt', () => {
     it('returns the dot at the specified location', () => {
         const board = new Board([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
         expect(board.dotAt(2, 1)).toBe(6);
+    });
+});
+
+describe('ownerAt', () => {
+    it('returns the owner of the dot at the given location', () => {
+        const player = new Player('1', 'Wilbur', 'red');
+        const board = Board.create(3, 3)
+            .drawLeftLine(player, 1, 1)
+            .drawTopLine(player, 1, 1)
+            .drawLeftLine(player, 2, 1)
+            .drawTopLine(player, 1, 2);
+        
+        expect(board.ownerAt(1, 1)).toBe(player);
+    });
+
+    it('returns null if the x coordinate is at the right edge of the board', () => {
+        const player = new Player('1', 'Wilbur', 'red');
+        const board = Board.create(3, 3);
+    
+        expect(board.ownerAt(2, 1)).toBeNull();
+    });
+
+    it('returns null if the y coordinate is at the bottom edge of the board', () => {
+        const player = new Player('1', 'Wilbur', 'red');
+        const board = Board.create(3, 3);
+    
+        expect(board.ownerAt(1, 2)).toBeNull();
     });
 });
 
