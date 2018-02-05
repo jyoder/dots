@@ -1,5 +1,6 @@
 import Game from 'state/Game';
 import Board from 'state/Board';
+import Player from 'state/Player';
 
 describe('create', () => {
     it('returns a game with the specified width, height', () => {
@@ -57,6 +58,19 @@ describe('dotAt', () => {
         expect(game.dotAt(0, 2).isBottom()).toBeTruthy();
         expect(game.dotAt(1, 2).isBottom()).toBeTruthy();
         expect(game.dotAt(2, 2).isBottomRight()).toBeTruthy();
+    });
+});
+
+describe('ownerAt', () => {
+    it('returns the owner of the dot at the specified location', () => {
+        const player = new Player('1', 'Wilbur', 'red');
+        const game = Game.create(3, 3, [player])
+            .drawLeftLine(1, 1)
+            .drawTopLine(1, 1)
+            .drawLeftLine(2, 1)
+            .drawTopLine(1, 2);
+        
+        expect(game.ownerAt(1, 1)).toBe(player);
     });
 });
 

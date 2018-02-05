@@ -27,6 +27,10 @@ export default class Game {
         return this._board.dotAt(x, y);
     }
 
+    ownerAt(x, y) {
+        return this._board.ownerAt(x, y);
+    }
+
     drawTopLine(x, y) {
         if(!this.dotAt(x, y).topLineOwner()) {
             const board = this._board.drawTopLine(this.activePlayer(), x, y);
