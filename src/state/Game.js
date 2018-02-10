@@ -1,14 +1,17 @@
 import Board from 'state/Board';
+import ScoreBoard from 'state/ScoreBoard';
 
 export default class Game {
     static create(width, height, players) {
-        return new Game(Board.create(width, height), players, 0);
+        const board = Board.create(width, height);
+        return new Game(board, players, 0, new ScoreBoard(board, players));
     }
 
-    constructor(board, players, activePlayerIndex) {
+    constructor(board, players, activePlayerIndex, scoreBoard) {
         this._board = board;
         this._players = players;
         this._activePlayerIndex = activePlayerIndex;
+        this._scoreBoard = scoreBoard;
     }
 
     width() {
@@ -49,8 +52,16 @@ export default class Game {
         }
     }
 
+    scores() {
+        return this._scoreBoard.scores();
+    }
+
     _nextGameState(board) {
-        return new Game(board, this._players, this._nextActivePlayerIndex());
+        return new Game(
+            board,
+            this._players,
+            this._nextActivePlayerIndex(),
+            this._scoreBoard);
     }
 
     _nextActivePlayerIndex() {

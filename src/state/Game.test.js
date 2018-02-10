@@ -1,6 +1,7 @@
 import Game from 'state/Game';
 import Board from 'state/Board';
 import Player from 'state/Player';
+import ScoreBoard from 'state/ScoreBoard';
 
 describe('create', () => {
     it('returns a game with the specified width, height', () => {
@@ -17,10 +18,17 @@ describe('create', () => {
 
 describe('constructor', () => {
     it('returns a game initialized with the specified properties', () => {
-        const game = new Game(Board.create(2, 3), ['player1', 'player2'], 1);
+        const board = Board.create(2, 3);
+        const player1 = new Player('1', 'Wilbur', 'red');
+        const player2 = new Player('2', 'Filbra', 'blue');
+        const players = [player1, player2];
+        const scoreBoard = new ScoreBoard(board, players);
+
+        const game = new Game(board, players, 1, scoreBoard);
         expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
-        expect(game.activePlayer()).toEqual('player2');
+        expect(game.activePlayer()).toBe(player2);
+        expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
     });
 });
 
@@ -40,7 +48,7 @@ describe('height', () => {
 
 describe('activePlayer', () => {
     it('returns the active player specified in the constructor', () => {
-        const game = new Game({}, ['player1', 'player2'], 1);
+        const game = new Game({}, ['player1', 'player2'], 1, null);
         expect(game.activePlayer()).toBe('player2');
     });
 });
@@ -112,6 +120,22 @@ describe('drawTopLine', () => {
         const game = Game.create(3, 3, ['player']);
         expect(game.drawLeftLine(2, 1).drawTopLine(2, 1)).not.toBeNull();
     });
+
+    it('game state is correctly propagated to a new instance', () => {
+        const board = Board.create(2, 3);
+        const player1 = new Player('1', 'Wilbur', 'red');
+        const player2 = new Player('2', 'Filbra', 'blue');
+        const players = [player1, player2];
+        const scoreBoard = new ScoreBoard(board, players);
+
+        const game = new Game(board, players, 1, scoreBoard)
+            .drawLeftLine(0, 0);
+            
+        expect(game.width()).toBe(2);
+        expect(game.height()).toBe(3);
+        expect(game.activePlayer()).toBe(player1);
+        expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
+    });
 });
 
 describe('drawLeftLine', () => {
@@ -151,5 +175,37 @@ describe('drawLeftLine', () => {
     it('ignores the state of the top line', () => {
         const game = Game.create(3, 3, ['player']);
         expect(game.drawTopLine(2, 1).drawLeftLine(2, 1)).not.toBeNull();
+    });
+
+    it('game state is correctly propagated to a new instance', () => {
+        const board = Board.create(2, 3);
+        const player1 = new Player('1', 'Wilbur', 'red');
+        const player2 = new Player('2', 'Filbra', 'blue');
+        const players = [player1, player2];
+        const scoreBoard = new ScoreBoard(board, players);
+
+        const game = new Game(board, players, 1, scoreBoard)
+            .drawTopLine(0, 0);
+        
+            expect(game.width()).toBe(2);
+        expect(game.height()).toBe(3);
+        expect(game.activePlayer()).toBe(player1);
+        expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
+    });
+});
+
+describe('scores', () => {
+    it('returns a score of 1 for a player that has captured one square', () => {
+        const player = new Player('1', 'Wilbur', 'red');
+        const board = Board
+            .create(2, 3)
+            .drawLeftLine(player, 0, 0)
+            .drawTopLine(player, 0, 0)
+            .drawLeftLine(player, 1, 0)
+            .drawTopLine(player, 0, 1);
+        const scoreBoard = new ScoreBoard(board, [player]);
+        const game = new Game(board, [player], 1, scoreBoard);
+        
+        expect(game.scores()).toEqual(new Map([[player, 1]]));
     });
 });
