@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'ui/DotView.css';
 
 export default class DotView extends React.Component {
@@ -24,3 +25,7 @@ export default class DotView extends React.Component {
         }
     }
 }
+
+DotView.propTypes = {
+    dot: PropTypes.object.isRequired
+};
