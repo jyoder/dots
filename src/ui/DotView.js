@@ -5,7 +5,7 @@ import 'ui/DotView.css';
 export default class DotView extends React.Component {
     render() {
         return (
-            <div className={this._classes()}>
+            <div className={this._classes()} onClick={this._handleClick.bind(this)}>
                 <span className='DotView-vertex'/>
             </div>
         );
@@ -48,6 +48,10 @@ export default class DotView extends React.Component {
     _leftOwnerClass() {
         const owner = this.props.dot.leftLineOwner();
         return owner ? `DotView--leftOwnedByPlayer${owner.playerIndex()}` : null;
+    }
+
+    _handleClick(event) {
+        this.props.dotClickHandler.handleClick(event);
     }
 }
 
