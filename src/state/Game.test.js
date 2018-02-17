@@ -19,8 +19,8 @@ describe('create', () => {
 describe('constructor', () => {
     it('returns a game initialized with the specified properties', () => {
         const board = Board.create(2, 3);
-        const player1 = new Player('1', 'Wilbur', 'red');
-        const player2 = new Player('2', 'Filbra', 'blue');
+        const player1 = new Player('1', 1, 'Wilbur', 'red');
+        const player2 = new Player('2', 2, 'Filbra', 'blue');
         const players = [player1, player2];
         const scoreBoard = new ScoreBoard(board, players);
 
@@ -71,7 +71,7 @@ describe('dotAt', () => {
 
 describe('ownerAt', () => {
     it('returns the owner of the dot at the specified location', () => {
-        const player = new Player('1', 'Wilbur', 'red');
+        const player = new Player('1', 1, 'Wilbur', 'red');
         const game = Game.create(3, 3, [player])
             .drawLeftLine(1, 1)
             .drawTopLine(1, 1)
@@ -123,8 +123,8 @@ describe('drawTopLine', () => {
 
     it('game state is correctly propagated to a new instance', () => {
         const board = Board.create(2, 3);
-        const player1 = new Player('1', 'Wilbur', 'red');
-        const player2 = new Player('2', 'Filbra', 'blue');
+        const player1 = new Player('1', 1, 'Wilbur', 'red');
+        const player2 = new Player('2', 2, 'Filbra', 'blue');
         const players = [player1, player2];
         const scoreBoard = new ScoreBoard(board, players);
 
@@ -179,8 +179,8 @@ describe('drawLeftLine', () => {
 
     it('game state is correctly propagated to a new instance', () => {
         const board = Board.create(2, 3);
-        const player1 = new Player('1', 'Wilbur', 'red');
-        const player2 = new Player('2', 'Filbra', 'blue');
+        const player1 = new Player('1', 1, 'Wilbur', 'red');
+        const player2 = new Player('2', 2, 'Filbra', 'blue');
         const players = [player1, player2];
         const scoreBoard = new ScoreBoard(board, players);
 
@@ -196,7 +196,7 @@ describe('drawLeftLine', () => {
 
 describe('scores', () => {
     it('returns a score of 1 for a player that has captured one square', () => {
-        const player = new Player('1', 'Wilbur', 'red');
+        const player = new Player('1', 1, 'Wilbur', 'red');
         const board = Board
             .create(2, 3)
             .drawLeftLine(player, 0, 0)
