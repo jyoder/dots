@@ -45,7 +45,7 @@ test('DotView with a left line owned by player with index 2 has the correspondin
     expect(dotView.hasClass('DotView--leftOwnedByPlayer2')).toBeTruthy();
 });
 
-test('DotView with a top and left lines owned by different players have the corresponding color classes', () => {
+test('DotView with top and left lines owned by different players have their corresponding color classes', () => {
     const dot = Dot.createStandard()
         .drawLeftLine(new Player('1', 1, 'Nemo'))
         .drawTopLine(new Player('2', 2, 'Nermo'));
