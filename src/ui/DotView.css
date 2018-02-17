@@ -1,3 +1,5 @@
+@import 'PlayerColors.css';
+
 .DotView {
     display: inline-block;
     position: relative;
@@ -20,6 +22,38 @@
 
 .DotView--bottomRight {
     border-style: none;
+}
+
+.DotView--topOwnedByPlayer1 {
+    border-top-color: var(--playerColor1);
+}
+
+.DotView--topOwnedByPlayer2 {
+    border-top-color: var(--playerColor2);
+}
+
+.DotView--topOwnedByPlayer3 {
+    border-top-color: var(--playerColor3);
+}
+
+.DotView--topOwnedByPlayer4 {
+    border-top-color: var(--playerColor4);
+}
+
+.DotView--leftOwnedByPlayer1 {
+    border-left-color: var(--playerColor1);
+}
+
+.DotView--leftOwnedByPlayer2 {
+    border-left-color: var(--playerColor2);
+}
+
+.DotView--leftOwnedByPlayer3 {
+    border-left-color: var(--playerColor3);
+}
+
+.DotView--leftOwnedByPlayer4 {
+    border-left-color: var(--playerColor4);
 }
 
 .DotView-vertex {

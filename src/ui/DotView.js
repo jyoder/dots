@@ -12,10 +12,25 @@ export default class DotView extends React.Component {
     }
 
     _classes() {
-        const dot = this.props.dot;
+        const classes = ['DotView', this._dotTypeClass()];
+        
+        const topOwnerClass = this._topOwnerClass();
+        if(topOwnerClass) {
+            classes.push(topOwnerClass);
+        }
 
+        const leftOwnerClass = this._leftOwnerClass();
+        if(leftOwnerClass) {
+            classes.push(leftOwnerClass);
+        }
+
+        return classes.join(' ');
+    }
+
+    _dotTypeClass() {
+        const dot = this.props.dot;
         if(dot.isStandard()) {
-            return 'DotView DotView--standard';
+            return 'DotView--standard';
         } else if(dot.isBottom()) {
             return 'DotView DotView--bottom';
         } else if(dot.isRight()) {
@@ -23,6 +38,16 @@ export default class DotView extends React.Component {
         } else {
             return 'DotView DotView--bottomRight';
         }
+    }
+
+    _topOwnerClass() {
+        const owner = this.props.dot.topLineOwner();
+        return owner ? `DotView--topOwnedByPlayer${owner.playerIndex()}` : null;
+    }
+
+    _leftOwnerClass() {
+        const owner = this.props.dot.leftLineOwner();
+        return owner ? `DotView--leftOwnedByPlayer${owner.playerIndex()}` : null;
     }
 }
 
