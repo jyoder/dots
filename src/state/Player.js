@@ -1,9 +1,8 @@
 export default class Player {
-    constructor(playerId, playerIndex, playerName, color) {
+    constructor(playerId, playerIndex, playerName) {
         this._playerId = playerId;
         this._playerIndex = playerIndex;
         this._playerName = playerName;
-        this._color = color;
     }
 
     playerId() {
@@ -16,9 +15,5 @@ export default class Player {
 
     playerName() {
         return this._playerName;
-    }
-
-    color() {
-        return this._color;
     }
 }

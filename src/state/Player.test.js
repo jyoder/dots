@@ -7,6 +7,5 @@ describe('constructor', () => {
         expect(player.playerId()).toBe('someId');
         expect(player.playerIndex()).toBe(0);
         expect(player.playerName()).toBe('Gordon');
-        expect(player.color()).toBe('red');
     });
 });

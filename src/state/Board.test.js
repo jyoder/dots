@@ -46,7 +46,7 @@ describe('dotAt', () => {
 
 describe('ownerAt', () => {
     it('returns the owner of the dot at the given location', () => {
-        const player = new Player('0', 0, 'Wilbur', 'red');
+        const player = new Player('0', 0, 'Wilbur');
         const board = Board.create(3, 3)
             .drawLeftLine(player, 1, 1)
             .drawTopLine(player, 1, 1)
@@ -57,14 +57,14 @@ describe('ownerAt', () => {
     });
 
     it('returns null if the x coordinate is at the right edge of the board', () => {
-        const player = new Player('0', 0, 'Wilbur', 'red');
+        const player = new Player('0', 0, 'Wilbur');
         const board = Board.create(3, 3);
     
         expect(board.ownerAt(2, 1)).toBeNull();
     });
 
     it('returns null if the y coordinate is at the bottom edge of the board', () => {
-        const player = new Player('0', 0, 'Wilbur', 'red');
+        const player = new Player('0', 0, 'Wilbur');
         const board = Board.create(3, 3);
     
         expect(board.ownerAt(1, 2)).toBeNull();

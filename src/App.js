@@ -5,7 +5,7 @@ import DotView from 'ui/DotView'
 
 class App extends React.Component {
   render() {
-    const player = new Player('0', 0, 'Gordon', 'red');
+    const player = new Player('0', 0, 'Gordon');
     return (
       <div className="App">
         <DotView dot={Dot.createStandard()}/>
