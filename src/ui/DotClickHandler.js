@@ -7,7 +7,6 @@ export default class DotClickHandler {
     }
 
     handleClick(event) {
-        const rect = event.target.getBoundingClientRect();
         if(this._clickedLeftLine(event)) {
             this._leftLineCallback();
         } else if(this._clickedTopLine(event)) {
