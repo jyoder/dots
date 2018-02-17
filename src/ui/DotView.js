@@ -56,5 +56,6 @@ export default class DotView extends React.Component {
 }
 
 DotView.propTypes = {
-    dot: PropTypes.object.isRequired
+    dot: PropTypes.object.isRequired,
+    dotClickHandler: PropTypes.object.isRequired
 };
