@@ -3,9 +3,11 @@
 .DotView {
     display: inline-block;
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     color: #edf2f7;
+    border-left-width: 8px;
+    border-top-width: 8px;
 }
 
 .DotView--standard {
