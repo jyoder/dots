@@ -1,0 +1,33 @@
+@import '~ui/PlayerColors.css';
+
+.PlayerToken {
+    --size: 25px;
+
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border-style: none;
+    
+    color: white;
+    font-size: 10pt;
+    
+    text-align: center;
+    line-height: var(--size);
+}
+
+.PlayerToken--player1 {
+    background-color: var(--playerColor1);
+}
+
+.PlayerToken--player2 {
+    background-color: var(--playerColor2);
+}
+
+.PlayerToken--player3 {
+    background-color: var(--playerColor3);
+}
+
+.PlayerToken--player4 {
+    background-color: var(--playerColor4);
+}
