@@ -4,7 +4,7 @@ import Player from 'state/Player';
 import DotView from 'ui/DotView'
 import DotClickHandler from 'ui/DotClickHandler';
 import PlayerToken from 'ui/PlayerToken';
-import PlayerSlug from 'ui/PlayerSlug';
+import PlayerTokenSlug from 'ui/PlayerTokenSlug';
 
 class App extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class App extends React.Component {
           <PlayerToken player={new Player('2', 2, 'Bertha')}/>
         </DotView>
         <DotView dot={dot} dotClickHandler={dotClickHandler}>
-          <PlayerSlug/>
+          <PlayerTokenSlug/>
         </DotView>
       </div>
     );
