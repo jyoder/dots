@@ -1,4 +1,6 @@
 import DotView from 'ui/DotView';
+import PlayerSlug from 'ui/PlayerSlug';
+
 import Dot from 'state/Dot';
 import Player from 'state/Player';
 
@@ -69,4 +71,13 @@ test('DotView invokes the click handler when clicked', () => {
 
     expect(dotClickHandler.handleClick).toHaveBeenCalledTimes(1);
     expect(dotClickHandler.handleClick).toHaveBeenCalledWith(event);
+});
+
+test('DotView renders a child element', () => {
+    const dotView = shallow(
+        <DotView dot={Dot.createStandard()} dotClickHandler={jest.fn()}>
+            <PlayerSlug/>
+        </DotView>
+    );
+    expect(dotView.find(PlayerSlug).length).toBe(1);
 });

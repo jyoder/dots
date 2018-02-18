@@ -7,6 +7,7 @@ export default class DotView extends React.Component {
         return (
             <div className={this._classes()} onClick={this._handleClick.bind(this)}>
                 <span className='DotView-vertex'/>
+                {this.props.children}
             </div>
         );
     }
@@ -57,5 +58,5 @@ export default class DotView extends React.Component {
 
 DotView.propTypes = {
     dot: PropTypes.object.isRequired,
-    dotClickHandler: PropTypes.object.isRequired
+    dotClickHandler: PropTypes.object.isRequired,
 };
