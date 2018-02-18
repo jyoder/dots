@@ -1,4 +1,4 @@
-@import 'PlayerColors.css';
+@import '~ui/PlayerColors.css';
 
 .DotView {
     display: inline-block;
