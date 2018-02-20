@@ -84,7 +84,7 @@ describe('isBottomRight', () => {
 });
 
 describe('markTopLine', () => {
-    it('returns a new dot with the specified top line owner', () => {
+    it('returns a new dot with the specified top line marker', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.markTopLine(1);
@@ -101,7 +101,7 @@ describe('markTopLine', () => {
 });
 
 describe('markLeftLine', () => {
-    it('returns a new dot with the specified left line owner', () => {
+    it('returns a new dot with the specified left line marker', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.markLeftLine(1);
@@ -118,42 +118,42 @@ describe('markLeftLine', () => {
 });
 
 describe('isComplete', () => {
-    it('returns true if the type is standard and both the top and left lines have owners', () => {
+    it('returns true if the type is standard and both the top and left lines have markers', () => {
         const dot = Dot.createStandard().markTopLine(1).markLeftLine(2);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is standard and the top line has no owner', () => {
+    it('returns false if the type is standard and the top line has no marker', () => {
         const dot = Dot.createStandard().markLeftLine(2);
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns false if the type is standard and the left line has no owner', () => {
+    it('returns false if the type is standard and the left line has no marker', () => {
         const dot = Dot.createStandard().markTopLine(1);
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns false if the type is standard and the top and left lines have no owner', () => {
+    it('returns false if the type is standard and the top and left lines have no marker', () => {
         const dot = Dot.createStandard();
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns true if the type is bottom and the left line has an owner', () => {
+    it('returns true if the type is bottom and the left line has an marker', () => {
         const dot = Dot.createBottom().markLeftLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is bottom and the left line has no owner', () => {
+    it('returns false if the type is bottom and the left line has no marker', () => {
         const dot = Dot.createBottom();
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns true if the type is right and the top line has an owner', () => {
+    it('returns true if the type is right and the top line has an marker', () => {
         const dot = Dot.createRight().markTopLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is right and the top line has no owner', () => {
+    it('returns false if the type is right and the top line has no marker', () => {
         const dot = Dot.createRight();
         expect(dot.isComplete()).toBe(false);
     });
