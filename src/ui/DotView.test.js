@@ -28,33 +28,33 @@ test('DotView with a bottom right dot includes the bottom right class', () => {
 });
 
 test('DotView with a top line owned by player with index 1 has the corresponding color class', () => {
-    const dot = Dot.createStandard().drawTopLine(new Player('1', 1, 'Nemo'));
+    const dot = Dot.createStandard().markTopLine(new Player('1', 1, 'Nemo'));
     const dotView = shallow(<DotView dot={dot} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--topMarkedByPlayer1')).toBeTruthy();
 });
 
 test('DotView with a top line owned by player with index 2 has the corresponding color class', () => {
-    const dot = Dot.createStandard().drawTopLine(new Player('1', 2, 'Nemo'));
+    const dot = Dot.createStandard().markTopLine(new Player('1', 2, 'Nemo'));
     const dotView = shallow(<DotView dot={dot} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--topMarkedByPlayer2')).toBeTruthy();
 });
 
 test('DotView with a left line owned by player with index 1 has the corresponding color class', () => {
-    const dot = Dot.createStandard().drawLeftLine(new Player('1', 1, 'Nemo'));
+    const dot = Dot.createStandard().markLeftLine(new Player('1', 1, 'Nemo'));
     const dotView = shallow(<DotView dot={dot} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--leftMarkedByPlayer1')).toBeTruthy();
 });
 
 test('DotView with a left line owned by player with index 2 has the corresponding color class', () => {
-    const dot = Dot.createStandard().drawLeftLine(new Player('1', 2, 'Nemo'));
+    const dot = Dot.createStandard().markLeftLine(new Player('1', 2, 'Nemo'));
     const dotView = shallow(<DotView dot={dot} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--leftMarkedByPlayer2')).toBeTruthy();
 });
 
 test('DotView with top and left lines owned by different players have their corresponding color classes', () => {
     const dot = Dot.createStandard()
-        .drawLeftLine(new Player('1', 1, 'Nemo'))
-        .drawTopLine(new Player('2', 2, 'Nermo'));
+        .markLeftLine(new Player('1', 1, 'Nemo'))
+        .markTopLine(new Player('2', 2, 'Nermo'));
 
     const dotView = shallow(<DotView dot={dot} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--leftMarkedByPlayer1')).toBeTruthy();

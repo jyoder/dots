@@ -34,18 +34,18 @@ export default class Game {
         return this._board.ownerAt(x, y);
     }
 
-    drawTopLine(x, y) {
+    markTopLine(x, y) {
         if(!this.dotAt(x, y).topLineMarker()) {
-            const board = this._board.drawTopLine(this.activePlayer(), x, y);
+            const board = this._board.markTopLine(this.activePlayer(), x, y);
             return this._nextGameState(board);
         } else {
             return null;
         }
     }
 
-    drawLeftLine(x, y) {
+    markLeftLine(x, y) {
         if(!this.dotAt(x, y).leftLineMarker()) {
-            const board = this._board.drawLeftLine(this.activePlayer(), x, y);
+            const board = this._board.markLeftLine(this.activePlayer(), x, y);
             return this._nextGameState(board);
         } else {
             return null;

@@ -73,52 +73,52 @@ describe('ownerAt', () => {
     it('returns the owner of the dot at the specified location', () => {
         const player = new Player('1', 1, 'Wilbur');
         const game = Game.create(3, 3, [player])
-            .drawLeftLine(1, 1)
-            .drawTopLine(1, 1)
-            .drawLeftLine(2, 1)
-            .drawTopLine(1, 2);
+            .markLeftLine(1, 1)
+            .markTopLine(1, 1)
+            .markLeftLine(2, 1)
+            .markTopLine(1, 2);
         
         expect(game.ownerAt(1, 1)).toBe(player);
     });
 });
 
-describe('drawTopLine', () => {
+describe('markTopLine', () => {
     it('returns a new game', () => {
         const game = Game.create(3, 3, ['player1']);
         
-        const nextGame = game.drawTopLine(1, 1);
+        const nextGame = game.markTopLine(1, 1);
         expect(nextGame).not.toBe(game);
     });
 
     it('returns a game where the active player is the next one in our list', () => {
         const game = Game.create(3, 3, ['player1', 'player2']);
         
-        const nextGame = game.drawTopLine(1, 1);
+        const nextGame = game.markTopLine(1, 1);
         expect(nextGame.activePlayer()).toBe('player2');
     });
 
     it('returns a game where the first player succeeds the last player', () => {
         const game = Game.create(3, 3, ['player1', 'player2']);
 
-        const nextGame = game.drawTopLine(1, 1).drawTopLine(1, 2);
+        const nextGame = game.markTopLine(1, 1).markTopLine(1, 2);
         expect(nextGame.activePlayer()).toBe('player1');
     });
 
     it('draws the top line for the active player at the specified location on the board', () => {
         const game = Game.create(3, 3, ['player']);
 
-        const nextGame = game.drawTopLine(2, 1);
+        const nextGame = game.markTopLine(2, 1);
         expect(nextGame.dotAt(2, 1).topLineMarker()).toEqual('player');
     });
 
     it('returns null if the specified line has already been drawn', () => {
-        const game = Game.create(3, 3, ['player']).drawTopLine(2, 1);
-        expect(game.drawTopLine(2, 1)).toBeNull();
+        const game = Game.create(3, 3, ['player']).markTopLine(2, 1);
+        expect(game.markTopLine(2, 1)).toBeNull();
     });
 
     it('ignores the state of the left line', () => {
         const game = Game.create(3, 3, ['player']);
-        expect(game.drawLeftLine(2, 1).drawTopLine(2, 1)).not.toBeNull();
+        expect(game.markLeftLine(2, 1).markTopLine(2, 1)).not.toBeNull();
     });
 
     it('game state is correctly propagated to a new instance', () => {
@@ -129,7 +129,7 @@ describe('drawTopLine', () => {
         const scoreBoard = new ScoreBoard(board, players);
 
         const game = new Game(board, players, 1, scoreBoard)
-            .drawLeftLine(0, 0);
+            .markLeftLine(0, 0);
             
         expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
@@ -138,43 +138,43 @@ describe('drawTopLine', () => {
     });
 });
 
-describe('drawLeftLine', () => {
+describe('markLeftLine', () => {
     it('returns a new game', () => {
         const game = Game.create(3, 3, ['player1']);
         
-        const nextGame = game.drawLeftLine(1, 1);
+        const nextGame = game.markLeftLine(1, 1);
         expect(nextGame).not.toBe(game);
     });
 
     it('returns a game where the active player is the next one in our list', () => {
         const game = Game.create(3, 3, ['player1', 'player2']);
         
-        const nextGame = game.drawLeftLine(1, 1);
+        const nextGame = game.markLeftLine(1, 1);
         expect(nextGame.activePlayer()).toBe('player2');
     });
 
     it('returns a game where the first player succeeds the last player', () => {
         const game = Game.create(3, 3, ['player1', 'player2']);
 
-        const nextGame = game.drawLeftLine(1, 1).drawTopLine(1, 2);
+        const nextGame = game.markLeftLine(1, 1).markTopLine(1, 2);
         expect(nextGame.activePlayer()).toBe('player1');
     });
 
     it('draws the left line for the active player at the specified location on the board', () => {
         const game = Game.create(3, 3, ['player']);
 
-        const nextGame = game.drawLeftLine(2, 1);
+        const nextGame = game.markLeftLine(2, 1);
         expect(nextGame.dotAt(2, 1).leftLineMarker()).toEqual('player');
     });
 
     it('returns null if the specified line has already been drawn', () => {
-        const game = Game.create(3, 3, ['player']).drawLeftLine(2, 1);
-        expect(game.drawLeftLine(2, 1)).toBeNull();
+        const game = Game.create(3, 3, ['player']).markLeftLine(2, 1);
+        expect(game.markLeftLine(2, 1)).toBeNull();
     });
 
     it('ignores the state of the top line', () => {
         const game = Game.create(3, 3, ['player']);
-        expect(game.drawTopLine(2, 1).drawLeftLine(2, 1)).not.toBeNull();
+        expect(game.markTopLine(2, 1).markLeftLine(2, 1)).not.toBeNull();
     });
 
     it('game state is correctly propagated to a new instance', () => {
@@ -185,7 +185,7 @@ describe('drawLeftLine', () => {
         const scoreBoard = new ScoreBoard(board, players);
 
         const game = new Game(board, players, 1, scoreBoard)
-            .drawTopLine(0, 0);
+            .markTopLine(0, 0);
         
             expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
@@ -199,10 +199,10 @@ describe('scores', () => {
         const player = new Player('1', 1, 'Wilbur');
         const board = Board
             .create(2, 3)
-            .drawLeftLine(player, 0, 0)
-            .drawTopLine(player, 0, 0)
-            .drawLeftLine(player, 1, 0)
-            .drawTopLine(player, 0, 1);
+            .markLeftLine(player, 0, 0)
+            .markTopLine(player, 0, 0)
+            .markLeftLine(player, 1, 0)
+            .markTopLine(player, 0, 1);
         const scoreBoard = new ScoreBoard(board, [player]);
         const game = new Game(board, [player], 1, scoreBoard);
         

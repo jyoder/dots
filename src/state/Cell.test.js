@@ -7,9 +7,9 @@ describe('owner', () => {
         const player = new Player('0', 0, 'Wilbur', 'red');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player).drawLeftLine(player),
-            Dot.createStandard().drawLeftLine(player),
-            Dot.createStandard().drawTopLine(player)
+            Dot.createStandard().markTopLine(player).markLeftLine(player),
+            Dot.createStandard().markLeftLine(player),
+            Dot.createStandard().markTopLine(player)
         );
 
         expect(cell.owner()).toEqual(player);
@@ -20,9 +20,9 @@ describe('owner', () => {
         const player2 = new Player('2', 2, 'Gretta', 'blue');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player1).drawLeftLine(player2),
-            Dot.createStandard().drawLeftLine(player2),
-            Dot.createStandard().drawTopLine(player2)
+            Dot.createStandard().markTopLine(player1).markLeftLine(player2),
+            Dot.createStandard().markLeftLine(player2),
+            Dot.createStandard().markTopLine(player2)
         );
 
         expect(cell.owner()).toBeNull();
@@ -33,9 +33,9 @@ describe('owner', () => {
         const player2 = new Player('2', 2, 'Gretta', 'blue');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player2).drawLeftLine(player1),
-            Dot.createStandard().drawLeftLine(player2),
-            Dot.createStandard().drawTopLine(player2)
+            Dot.createStandard().markTopLine(player2).markLeftLine(player1),
+            Dot.createStandard().markLeftLine(player2),
+            Dot.createStandard().markTopLine(player2)
         );
 
         expect(cell.owner()).toBeNull();
@@ -46,9 +46,9 @@ describe('owner', () => {
         const player2 = new Player('2', 2, 'Gretta', 'blue');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player1).drawLeftLine(player1),
-            Dot.createStandard().drawLeftLine(player2),
-            Dot.createStandard().drawTopLine(player1)
+            Dot.createStandard().markTopLine(player1).markLeftLine(player1),
+            Dot.createStandard().markLeftLine(player2),
+            Dot.createStandard().markTopLine(player1)
         );
 
         expect(cell.owner()).toBeNull();
@@ -59,9 +59,9 @@ describe('owner', () => {
         const player2 = new Player('2', 2, 'Gretta', 'blue');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player1).drawLeftLine(player1),
-            Dot.createStandard().drawLeftLine(player1),
-            Dot.createStandard().drawTopLine(player2)
+            Dot.createStandard().markTopLine(player1).markLeftLine(player1),
+            Dot.createStandard().markLeftLine(player1),
+            Dot.createStandard().markTopLine(player2)
         );
 
         expect(cell.owner()).toBeNull();
@@ -71,9 +71,9 @@ describe('owner', () => {
         const player = new Player('1', 1, 'Wilbur', 'red');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player),
-            Dot.createStandard().drawLeftLine(player),
-            Dot.createStandard().drawTopLine(player)
+            Dot.createStandard().markTopLine(player),
+            Dot.createStandard().markLeftLine(player),
+            Dot.createStandard().markTopLine(player)
         );
 
         expect(cell.owner()).toBeNull();
@@ -83,9 +83,9 @@ describe('owner', () => {
         const player = new Player('1', 1, 'Wilbur', 'red');
 
         const cell = new Cell(
-            Dot.createStandard().drawLeftLine(player),
-            Dot.createStandard().drawLeftLine(player),
-            Dot.createStandard().drawTopLine(player)
+            Dot.createStandard().markLeftLine(player),
+            Dot.createStandard().markLeftLine(player),
+            Dot.createStandard().markTopLine(player)
         );
 
         expect(cell.owner()).toBeNull();
@@ -95,9 +95,9 @@ describe('owner', () => {
         const player = new Player('1', 1, 'Wilbur', 'red');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player).drawLeftLine(player),
+            Dot.createStandard().markTopLine(player).markLeftLine(player),
             Dot.createStandard(),
-            Dot.createStandard().drawTopLine(player)
+            Dot.createStandard().markTopLine(player)
         );
 
         expect(cell.owner()).toBeNull();
@@ -107,8 +107,8 @@ describe('owner', () => {
         const player = new Player('1', 1, 'Wilbur', 'red');
 
         const cell = new Cell(
-            Dot.createStandard().drawTopLine(player).drawLeftLine(player),
-            Dot.createStandard().drawLeftLine(player),
+            Dot.createStandard().markTopLine(player).markLeftLine(player),
+            Dot.createStandard().markLeftLine(player),
             Dot.createStandard()
         );
 

@@ -58,12 +58,12 @@ export default class Board {
         }
     }
 
-    drawTopLine(player, x, y) {
-        return this._replaceDot(this._dots[y][x].drawTopLine(player), x, y);
+    markTopLine(player, x, y) {
+        return this._replaceDot(this._dots[y][x].markTopLine(player), x, y);
     }
 
-    drawLeftLine(player, x, y) {
-        return this._replaceDot(this._dots[y][x].drawLeftLine(player), x, y);
+    markLeftLine(player, x, y) {
+        return this._replaceDot(this._dots[y][x].markLeftLine(player), x, y);
     }
 
     _replaceDot(dot, x, y) {

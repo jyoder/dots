@@ -83,11 +83,11 @@ describe('isBottomRight', () => {
     });
 });
 
-describe('drawTopLine', () => {
+describe('markTopLine', () => {
     it('returns a new dot with the specified top line owner', () => {
         const dot1 = Dot.createStandard();
 
-        const dot2 = dot1.drawTopLine(1);
+        const dot2 = dot1.markTopLine(1);
         expect(dot2.topLineMarker()).toBe(1);
         expect(dot2.leftLineMarker()).toBeNull();
     });
@@ -95,16 +95,16 @@ describe('drawTopLine', () => {
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
-        dot.drawTopLine(1);
+        dot.markTopLine(1);
         expect(dot.topLineMarker()).toBeNull();
     });
 });
 
-describe('drawLeftLine', () => {
+describe('markLeftLine', () => {
     it('returns a new dot with the specified left line owner', () => {
         const dot1 = Dot.createStandard();
 
-        const dot2 = dot1.drawLeftLine(1);
+        const dot2 = dot1.markLeftLine(1);
         expect(dot2.leftLineMarker()).toBe(1);
         expect(dot2.topLineMarker()).toBeNull();
     });
@@ -112,24 +112,24 @@ describe('drawLeftLine', () => {
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
-        dot.drawLeftLine(1);
+        dot.markLeftLine(1);
         expect(dot.leftLineMarker()).toBeNull();
     });
 });
 
 describe('isComplete', () => {
     it('returns true if the type is standard and both the top and left lines have owners', () => {
-        const dot = Dot.createStandard().drawTopLine(1).drawLeftLine(2);
+        const dot = Dot.createStandard().markTopLine(1).markLeftLine(2);
         expect(dot.isComplete()).toBe(true);
     });
 
     it('returns false if the type is standard and the top line has no owner', () => {
-        const dot = Dot.createStandard().drawLeftLine(2);
+        const dot = Dot.createStandard().markLeftLine(2);
         expect(dot.isComplete()).toBe(false);
     });
 
     it('returns false if the type is standard and the left line has no owner', () => {
-        const dot = Dot.createStandard().drawTopLine(1);
+        const dot = Dot.createStandard().markTopLine(1);
         expect(dot.isComplete()).toBe(false);
     });
 
@@ -139,7 +139,7 @@ describe('isComplete', () => {
     });
 
     it('returns true if the type is bottom and the left line has an owner', () => {
-        const dot = Dot.createBottom().drawLeftLine(1);
+        const dot = Dot.createBottom().markLeftLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 
@@ -149,7 +149,7 @@ describe('isComplete', () => {
     });
 
     it('returns true if the type is right and the top line has an owner', () => {
-        const dot = Dot.createRight().drawTopLine(1);
+        const dot = Dot.createRight().markTopLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 

@@ -54,11 +54,11 @@ export default class Dot {
         return this._type === BOTTOM_RIGHT_TYPE;
     }
 
-    drawTopLine(owner) {
+    markTopLine(owner) {
         return new Dot(this._type, owner, this._leftLineMarker);
     }
 
-    drawLeftLine(owner) {
+    markLeftLine(owner) {
         return new Dot(this._type, this._topLineMarker, owner);
     }
 

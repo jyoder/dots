@@ -37,10 +37,10 @@ describe('scores', () => {
 
     function _drawSquare(board, player, x, y) {
         return(
-            board.drawLeftLine(player, x, y)
-            .drawTopLine(player, x, y)
-            .drawLeftLine(player, x + 1, y)
-            .drawTopLine(player, x, y + 1)
+            board.markLeftLine(player, x, y)
+            .markTopLine(player, x, y)
+            .markLeftLine(player, x + 1, y)
+            .markTopLine(player, x, y + 1)
         );
     }
 });

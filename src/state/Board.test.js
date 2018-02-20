@@ -48,10 +48,10 @@ describe('ownerAt', () => {
     it('returns the owner of the dot at the given location', () => {
         const player = new Player('0', 0, 'Wilbur');
         const board = Board.create(3, 3)
-            .drawLeftLine(player, 1, 1)
-            .drawTopLine(player, 1, 1)
-            .drawLeftLine(player, 2, 1)
-            .drawTopLine(player, 1, 2);
+            .markLeftLine(player, 1, 1)
+            .markTopLine(player, 1, 1)
+            .markLeftLine(player, 2, 1)
+            .markTopLine(player, 1, 2);
         
         expect(board.ownerAt(1, 1)).toBe(player);
     });
@@ -71,11 +71,11 @@ describe('ownerAt', () => {
     });
 });
 
-describe('drawTopLine', () => {
+describe('markTopLine', () => {
     it('returns a new board', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawTopLine('player', 2, 2);
+        const board2 = board1.markTopLine('player', 2, 2);
         expect(board2).not.toBe(board1);
         expect(board2).toBeInstanceOf(Board);
     });
@@ -83,16 +83,16 @@ describe('drawTopLine', () => {
     it('returns a board with the specified line drawn', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawTopLine('player', 2, 2);    
+        const board2 = board1.markTopLine('player', 2, 2);    
         expect(board2.dotAt(2, 2).topLineMarker()).toBe('player');
     });
 });
 
-describe('drawLeftLine', () => {
+describe('markLeftLine', () => {
     it('returns a new board', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawLeftLine('player', 2, 2);
+        const board2 = board1.markLeftLine('player', 2, 2);
         expect(board2).not.toBe(board1);
         expect(board2).toBeInstanceOf(Board);
     });
@@ -100,7 +100,7 @@ describe('drawLeftLine', () => {
     it('returns a board with the specified line drawn', () => {
         const board1 = Board.create(3, 3);
     
-        const board2 = board1.drawLeftLine('player', 2, 2);    
+        const board2 = board1.markLeftLine('player', 2, 2);    
         expect(board2.dotAt(2, 2).leftLineMarker()).toBe('player');
     });
 });
