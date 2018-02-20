@@ -42,13 +42,13 @@ export default class DotView extends React.Component {
     }
 
     _topMarkerClass() {
-        const owner = this.props.dot.topLineMarker();
-        return owner ? `DotView--topMarkedByPlayer${owner.playerIndex()}` : null;
+        const marker = this.props.dot.topLineMarker();
+        return marker ? `DotView--topMarkedByPlayer${marker.playerIndex()}` : null;
     }
 
     _leftMarkerClass() {
-        const owner = this.props.dot.leftLineMarker();
-        return owner ? `DotView--leftMarkedByPlayer${owner.playerIndex()}` : null;
+        const marker = this.props.dot.leftLineMarker();
+        return marker ? `DotView--leftMarkedByPlayer${marker.playerIndex()}` : null;
     }
 
     _handleClick(event) {
