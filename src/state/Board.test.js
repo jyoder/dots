@@ -84,7 +84,7 @@ describe('drawTopLine', () => {
         const board1 = Board.create(3, 3);
     
         const board2 = board1.drawTopLine('player', 2, 2);    
-        expect(board2.dotAt(2, 2).topLineOwner()).toBe('player');
+        expect(board2.dotAt(2, 2).topLineMarker()).toBe('player');
     });
 });
 
@@ -101,6 +101,6 @@ describe('drawLeftLine', () => {
         const board1 = Board.create(3, 3);
     
         const board2 = board1.drawLeftLine('player', 2, 2);    
-        expect(board2.dotAt(2, 2).leftLineOwner()).toBe('player');
+        expect(board2.dotAt(2, 2).leftLineMarker()).toBe('player');
     });
 });

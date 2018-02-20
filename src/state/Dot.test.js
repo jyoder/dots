@@ -5,8 +5,8 @@ describe('createStandard', () => {
         const dot = Dot.createStandard();
 
         expect(dot.type()).toBe('standard');
-        expect(dot.topLineOwner()).toBeNull();
-        expect(dot.leftLineOwner()).toBeNull();
+        expect(dot.topLineMarker()).toBeNull();
+        expect(dot.leftLineMarker()).toBeNull();
     });
 });
 
@@ -15,8 +15,8 @@ describe('createBottom', () => {
         const dot = Dot.createBottom();
 
         expect(dot.type()).toBe('bottom');
-        expect(dot.topLineOwner()).toBeNull();
-        expect(dot.leftLineOwner()).toBeNull();
+        expect(dot.topLineMarker()).toBeNull();
+        expect(dot.leftLineMarker()).toBeNull();
     });
 });
 
@@ -25,8 +25,8 @@ describe('createRight', () => {
         const dot = Dot.createRight();
 
         expect(dot.type()).toBe('right');
-        expect(dot.topLineOwner()).toBeNull();
-        expect(dot.leftLineOwner()).toBeNull();
+        expect(dot.topLineMarker()).toBeNull();
+        expect(dot.leftLineMarker()).toBeNull();
     });
 });
 
@@ -35,8 +35,8 @@ describe('createBottomRight', () => {
         const dot = Dot.createBottomRight();
 
         expect(dot.type()).toBe('bottomRight');
-        expect(dot.topLineOwner()).toBeNull();
-        expect(dot.leftLineOwner()).toBeNull();
+        expect(dot.topLineMarker()).toBeNull();
+        expect(dot.leftLineMarker()).toBeNull();
     });
 });
 
@@ -45,8 +45,8 @@ describe('constructor', () => {
         const dot = new Dot('standard', 1, 2);
 
         expect(dot.type()).toBe('standard');
-        expect(dot.topLineOwner()).toBe(1);
-        expect(dot.leftLineOwner()).toBe(2);
+        expect(dot.topLineMarker()).toBe(1);
+        expect(dot.leftLineMarker()).toBe(2);
     });
 });
 
@@ -88,15 +88,15 @@ describe('drawTopLine', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.drawTopLine(1);
-        expect(dot2.topLineOwner()).toBe(1);
-        expect(dot2.leftLineOwner()).toBeNull();
+        expect(dot2.topLineMarker()).toBe(1);
+        expect(dot2.leftLineMarker()).toBeNull();
     });
 
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
         dot.drawTopLine(1);
-        expect(dot.topLineOwner()).toBeNull();
+        expect(dot.topLineMarker()).toBeNull();
     });
 });
 
@@ -105,15 +105,15 @@ describe('drawLeftLine', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.drawLeftLine(1);
-        expect(dot2.leftLineOwner()).toBe(1);
-        expect(dot2.topLineOwner()).toBeNull();
+        expect(dot2.leftLineMarker()).toBe(1);
+        expect(dot2.topLineMarker()).toBeNull();
     });
 
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
         dot.drawLeftLine(1);
-        expect(dot.leftLineOwner()).toBeNull();
+        expect(dot.leftLineMarker()).toBeNull();
     });
 });
 

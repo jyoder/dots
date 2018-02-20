@@ -15,14 +15,14 @@ export default class DotView extends React.Component {
     _classes() {
         const classes = ['DotView', this._dotTypeClass()];
         
-        const topOwnerClass = this._topOwnerClass();
-        if(topOwnerClass) {
-            classes.push(topOwnerClass);
+        const topMarkerClass = this._topMarkerClass();
+        if(topMarkerClass) {
+            classes.push(topMarkerClass);
         }
 
-        const leftOwnerClass = this._leftOwnerClass();
-        if(leftOwnerClass) {
-            classes.push(leftOwnerClass);
+        const leftMarkerClass = this._leftMarkerClass();
+        if(leftMarkerClass) {
+            classes.push(leftMarkerClass);
         }
 
         return classes.join(' ');
@@ -41,14 +41,14 @@ export default class DotView extends React.Component {
         }
     }
 
-    _topOwnerClass() {
-        const owner = this.props.dot.topLineOwner();
-        return owner ? `DotView--topOwnedByPlayer${owner.playerIndex()}` : null;
+    _topMarkerClass() {
+        const owner = this.props.dot.topLineMarker();
+        return owner ? `DotView--topMarkedByPlayer${owner.playerIndex()}` : null;
     }
 
-    _leftOwnerClass() {
-        const owner = this.props.dot.leftLineOwner();
-        return owner ? `DotView--leftOwnedByPlayer${owner.playerIndex()}` : null;
+    _leftMarkerClass() {
+        const owner = this.props.dot.leftLineMarker();
+        return owner ? `DotView--leftMarkedByPlayer${owner.playerIndex()}` : null;
     }
 
     _handleClick(event) {

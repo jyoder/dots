@@ -32,35 +32,35 @@
     border-style: none;
 }
 
-.DotView--topOwnedByPlayer1 {
+.DotView--topMarkedByPlayer1 {
     border-top-color: var(--playerColor1);
 }
 
-.DotView--topOwnedByPlayer2 {
+.DotView--topMarkedByPlayer2 {
     border-top-color: var(--playerColor2);
 }
 
-.DotView--topOwnedByPlayer3 {
+.DotView--topMarkedByPlayer3 {
     border-top-color: var(--playerColor3);
 }
 
-.DotView--topOwnedByPlayer4 {
+.DotView--topMarkedByPlayer4 {
     border-top-color: var(--playerColor4);
 }
 
-.DotView--leftOwnedByPlayer1 {
+.DotView--leftMarkedByPlayer1 {
     border-left-color: var(--playerColor1);
 }
 
-.DotView--leftOwnedByPlayer2 {
+.DotView--leftMarkedByPlayer2 {
     border-left-color: var(--playerColor2);
 }
 
-.DotView--leftOwnedByPlayer3 {
+.DotView--leftMarkedByPlayer3 {
     border-left-color: var(--playerColor3);
 }
 
-.DotView--leftOwnedByPlayer4 {
+.DotView--leftMarkedByPlayer4 {
     border-left-color: var(--playerColor4);
 }
 
@@ -74,7 +74,6 @@
     left: var(--location);
     top: var(--location);
     z-index: 100;
-    
     border-radius: 50%;
     border-style: none;
     background-color: #c9cdd1;

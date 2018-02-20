@@ -20,22 +20,22 @@ export default class Dot {
         return new Dot('bottomRight', null, null);
     }
 
-    constructor(type, topLineOwner, leftLineOwner) {
+    constructor(type, topLineMarker, leftLineMarker) {
         this._type = type;
-        this._topLineOwner = topLineOwner;
-        this._leftLineOwner = leftLineOwner;
+        this._topLineMarker = topLineMarker;
+        this._leftLineMarker = leftLineMarker;
     }
 
     type() {
         return this._type;
     }
 
-    topLineOwner() {
-        return this._topLineOwner;
+    topLineMarker() {
+        return this._topLineMarker;
     }
 
-    leftLineOwner() {
-        return this._leftLineOwner;
+    leftLineMarker() {
+        return this._leftLineMarker;
     }
 
     isStandard() {
@@ -55,18 +55,18 @@ export default class Dot {
     }
 
     drawTopLine(owner) {
-        return new Dot(this._type, owner, this._leftLineOwner);
+        return new Dot(this._type, owner, this._leftLineMarker);
     }
 
     drawLeftLine(owner) {
-        return new Dot(this._type, this._topLineOwner, owner);
+        return new Dot(this._type, this._topLineMarker, owner);
     }
 
     isComplete() {
         return(
-            (this.isStandard() && this._topLineOwner !== null && this._leftLineOwner !== null) ||
-            (this.isBottom() && this._leftLineOwner !== null) ||
-            (this.isRight() && this._topLineOwner !== null) ||
+            (this.isStandard() && this._topLineMarker !== null && this._leftLineMarker !== null) ||
+            (this.isBottom() && this._leftLineMarker !== null) ||
+            (this.isRight() && this._topLineMarker !== null) ||
             (this.isBottomRight())
         );
     }

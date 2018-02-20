@@ -35,7 +35,7 @@ export default class Game {
     }
 
     drawTopLine(x, y) {
-        if(!this.dotAt(x, y).topLineOwner()) {
+        if(!this.dotAt(x, y).topLineMarker()) {
             const board = this._board.drawTopLine(this.activePlayer(), x, y);
             return this._nextGameState(board);
         } else {
@@ -44,7 +44,7 @@ export default class Game {
     }
 
     drawLeftLine(x, y) {
-        if(!this.dotAt(x, y).leftLineOwner()) {
+        if(!this.dotAt(x, y).leftLineMarker()) {
             const board = this._board.drawLeftLine(this.activePlayer(), x, y);
             return this._nextGameState(board);
         } else {

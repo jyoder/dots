@@ -6,26 +6,26 @@ export default class Cell {
     }
 
     owner() {
-        if(this._sameOwner(
-            this._topLeftDot.leftLineOwner(),
-            this._topLeftDot.topLineOwner(),
-            this._topRightDot.leftLineOwner(),
-            this._bottomLeftDot.topLineOwner())) {
-            return this._topLeftDot.leftLineOwner();
+        if(this._sameMarker(
+            this._topLeftDot.leftLineMarker(),
+            this._topLeftDot.topLineMarker(),
+            this._topRightDot.leftLineMarker(),
+            this._bottomLeftDot.topLineMarker())) {
+            return this._topLeftDot.leftLineMarker();
         } else {
             return null;
         }
     }
 
-    _sameOwner(leftLineOwner, topLineOwner, rightLineOwner, bottomLineOwner) {
+    _sameMarker(leftLineMarker, topLineMarker, rightLineMarker, bottomLineMarker) {
         return(
-            leftLineOwner &&
-            topLineOwner &&
-            rightLineOwner &&
-            bottomLineOwner &&
-            leftLineOwner.playerId() === topLineOwner.playerId() &&
-            leftLineOwner.playerId() === rightLineOwner.playerId() &&
-            leftLineOwner.playerId() === bottomLineOwner.playerId()
+            leftLineMarker &&
+            topLineMarker &&
+            rightLineMarker &&
+            bottomLineMarker &&
+            leftLineMarker.playerId() === topLineMarker.playerId() &&
+            leftLineMarker.playerId() === rightLineMarker.playerId() &&
+            leftLineMarker.playerId() === bottomLineMarker.playerId()
         );
     }
 }
