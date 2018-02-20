@@ -21,15 +21,17 @@
 }
 
 .DotView--bottom {
-    border-style: none none none solid;
+    border-style: solid none none none;
+    margin-left: var(--lineWidth);
 }
 
 .DotView--right {
-    border-style: solid none none none;
+    border-style: none none none solid;
 }
 
 .DotView--bottomRight {
     border-style: none;
+    margin-left: var(--lineWidth);
 }
 
 .DotView--topMarkedByPlayer1 {
