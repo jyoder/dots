@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import 'ui/DotView.css';
 
 export default class DotView extends React.Component {
+    static LINE_WIDTH = 8;
+
     render() {
         return (
             <div className={this._classes()} onClick={this._handleClick.bind(this)}>

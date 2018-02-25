@@ -8,6 +8,10 @@ import Mark from 'state/Mark';
 import React from 'react';
 import { shallow } from 'enzyme';
 
+test('DotView line width is 8 pixels', () => {
+    expect(DotView.LINE_WIDTH).toBe(8);
+});
+
 test('DotView with a standard dot includes the standard class', () => {
     const dotView = shallow(<DotView dot={Dot.createStandard()} dotClickHandler={{}}/>);
     expect(dotView.hasClass('DotView--standard')).toBeTruthy();
