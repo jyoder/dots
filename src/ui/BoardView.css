@@ -1,0 +1,8 @@
+.BoardView {
+    /*
+     * Rows will have small vertical gaps between each other because of the whitespace between
+     * elements in the HTML. The browser is trying to render the whitespace as it would in normal
+     * text. We eliminate the gaps by setting the font size to zero.
+     */
+    font-size: 0pt;
+}
