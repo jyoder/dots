@@ -4,7 +4,7 @@ import Player from 'state/Player';
 import Board from 'state/Board';
 
 describe('scores', () => {
-    it('returns a mapping of player ids to scores where players in the map are ordered according to the', () => {
+    it('returns a mapping of player ids to scores where players in the map are ordered according to the given array', () => {
         const players = [new Player('2', 2, 'Olga'), new Player('1', 1, 'Helga')];
         const scoreBoard = new ScoreBoard(Board.create(3, 3), players);
         
