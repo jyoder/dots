@@ -163,3 +163,17 @@ describe('isComplete', () => {
         expect(dot.isComplete()).toBe(true);
     });
 });
+
+test('actions preserve all attributes in resulting dot', () => {
+    let dot = Dot.createStandard()
+        .markLeftLine(2)
+        .markTopLine(3);
+
+    dot = dot.markLeftLine(2);
+    expect(dot.leftLineMarker()).toBe(2);
+    expect(dot.topLineMarker()).toBe(3);
+
+    dot = dot.markTopLine(3);
+    expect(dot.leftLineMarker()).toBe(2);
+    expect(dot.topLineMarker()).toBe(3);
+});
