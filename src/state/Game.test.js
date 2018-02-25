@@ -108,7 +108,7 @@ describe('markTopLine', () => {
         const game = Game.create(3, 3, ['player']);
 
         const nextGame = game.markTopLine(2, 1);
-        expect(nextGame.dotAt(2, 1).topLineMarker()).toEqual('player');
+        expect(nextGame.dotAt(2, 1).topLineMark().player()).toEqual('player');
     });
 
     it('returns null if the specified line has already been drawn', () => {
@@ -164,7 +164,7 @@ describe('markLeftLine', () => {
         const game = Game.create(3, 3, ['player']);
 
         const nextGame = game.markLeftLine(2, 1);
-        expect(nextGame.dotAt(2, 1).leftLineMarker()).toEqual('player');
+        expect(nextGame.dotAt(2, 1).leftLineMark().player()).toEqual('player');
     });
 
     it('returns null if the specified line has already been drawn', () => {

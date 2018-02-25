@@ -5,8 +5,8 @@ describe('createStandard', () => {
         const dot = Dot.createStandard();
 
         expect(dot.type()).toBe('standard');
-        expect(dot.topLineMarker()).toBeNull();
-        expect(dot.leftLineMarker()).toBeNull();
+        expect(dot.topLineMark()).toBeNull();
+        expect(dot.leftLineMark()).toBeNull();
     });
 });
 
@@ -15,8 +15,8 @@ describe('createBottom', () => {
         const dot = Dot.createBottom();
 
         expect(dot.type()).toBe('bottom');
-        expect(dot.topLineMarker()).toBeNull();
-        expect(dot.leftLineMarker()).toBeNull();
+        expect(dot.topLineMark()).toBeNull();
+        expect(dot.leftLineMark()).toBeNull();
     });
 });
 
@@ -25,8 +25,8 @@ describe('createRight', () => {
         const dot = Dot.createRight();
 
         expect(dot.type()).toBe('right');
-        expect(dot.topLineMarker()).toBeNull();
-        expect(dot.leftLineMarker()).toBeNull();
+        expect(dot.topLineMark()).toBeNull();
+        expect(dot.leftLineMark()).toBeNull();
     });
 });
 
@@ -35,8 +35,8 @@ describe('createBottomRight', () => {
         const dot = Dot.createBottomRight();
 
         expect(dot.type()).toBe('bottomRight');
-        expect(dot.topLineMarker()).toBeNull();
-        expect(dot.leftLineMarker()).toBeNull();
+        expect(dot.topLineMark()).toBeNull();
+        expect(dot.leftLineMark()).toBeNull();
     });
 });
 
@@ -45,8 +45,8 @@ describe('constructor', () => {
         const dot = new Dot('standard', 1, 2);
 
         expect(dot.type()).toBe('standard');
-        expect(dot.topLineMarker()).toBe(1);
-        expect(dot.leftLineMarker()).toBe(2);
+        expect(dot.topLineMark()).toBe(1);
+        expect(dot.leftLineMark()).toBe(2);
     });
 });
 
@@ -84,76 +84,76 @@ describe('isBottomRight', () => {
 });
 
 describe('markTopLine', () => {
-    it('returns a new dot with the specified top line marker', () => {
+    it('returns a new dot with the specified top line mark', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.markTopLine(1);
-        expect(dot2.topLineMarker()).toBe(1);
-        expect(dot2.leftLineMarker()).toBeNull();
+        expect(dot2.topLineMark()).toBe(1);
+        expect(dot2.leftLineMark()).toBeNull();
     });
 
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
         dot.markTopLine(1);
-        expect(dot.topLineMarker()).toBeNull();
+        expect(dot.topLineMark()).toBeNull();
     });
 });
 
 describe('markLeftLine', () => {
-    it('returns a new dot with the specified left line marker', () => {
+    it('returns a new dot with the specified left line mark', () => {
         const dot1 = Dot.createStandard();
 
         const dot2 = dot1.markLeftLine(1);
-        expect(dot2.leftLineMarker()).toBe(1);
-        expect(dot2.topLineMarker()).toBeNull();
+        expect(dot2.leftLineMark()).toBe(1);
+        expect(dot2.topLineMark()).toBeNull();
     });
 
     it('does not modify the current dot', () => {
         const dot = Dot.createStandard();
     
         dot.markLeftLine(1);
-        expect(dot.leftLineMarker()).toBeNull();
+        expect(dot.leftLineMark()).toBeNull();
     });
 });
 
 describe('isComplete', () => {
-    it('returns true if the type is standard and both the top and left lines have markers', () => {
+    it('returns true if the type is standard and both the top and left lines have marks', () => {
         const dot = Dot.createStandard().markTopLine(1).markLeftLine(2);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is standard and the top line has no marker', () => {
+    it('returns false if the type is standard and the top line has no mark', () => {
         const dot = Dot.createStandard().markLeftLine(2);
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns false if the type is standard and the left line has no marker', () => {
+    it('returns false if the type is standard and the left line has no mark', () => {
         const dot = Dot.createStandard().markTopLine(1);
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns false if the type is standard and the top and left lines have no marker', () => {
+    it('returns false if the type is standard and the top and left lines have no mark', () => {
         const dot = Dot.createStandard();
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns true if the type is bottom and the left line has an marker', () => {
+    it('returns true if the type is bottom and the left line has an mark', () => {
         const dot = Dot.createBottom().markLeftLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is bottom and the left line has no marker', () => {
+    it('returns false if the type is bottom and the left line has no mark', () => {
         const dot = Dot.createBottom();
         expect(dot.isComplete()).toBe(false);
     });
 
-    it('returns true if the type is right and the top line has an marker', () => {
+    it('returns true if the type is right and the top line has an mark', () => {
         const dot = Dot.createRight().markTopLine(1);
         expect(dot.isComplete()).toBe(true);
     });
 
-    it('returns false if the type is right and the top line has no marker', () => {
+    it('returns false if the type is right and the top line has no mark', () => {
         const dot = Dot.createRight();
         expect(dot.isComplete()).toBe(false);
     });
@@ -170,10 +170,10 @@ test('actions preserve all attributes in resulting dot', () => {
         .markTopLine(3);
 
     dot = dot.markLeftLine(2);
-    expect(dot.leftLineMarker()).toBe(2);
-    expect(dot.topLineMarker()).toBe(3);
+    expect(dot.leftLineMark()).toBe(2);
+    expect(dot.topLineMark()).toBe(3);
 
     dot = dot.markTopLine(3);
-    expect(dot.leftLineMarker()).toBe(2);
-    expect(dot.topLineMarker()).toBe(3);
+    expect(dot.leftLineMark()).toBe(2);
+    expect(dot.topLineMark()).toBe(3);
 });

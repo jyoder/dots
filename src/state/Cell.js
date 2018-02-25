@@ -6,26 +6,22 @@ export default class Cell {
     }
 
     owner() {
-        if(this._sameMarker(
-            this._topLeftDot.leftLineMarker(),
-            this._topLeftDot.topLineMarker(),
-            this._topRightDot.leftLineMarker(),
-            this._bottomLeftDot.topLineMarker())) {
-            return this._topLeftDot.leftLineMarker();
-        } else {
-            return null;
-        }
+        const marks = this._marks();
+        return marks.length === 4 ? this._lastMark(marks).player() : null;
     }
 
-    _sameMarker(leftLineMarker, topLineMarker, rightLineMarker, bottomLineMarker) {
-        return(
-            leftLineMarker &&
-            topLineMarker &&
-            rightLineMarker &&
-            bottomLineMarker &&
-            leftLineMarker.playerId() === topLineMarker.playerId() &&
-            leftLineMarker.playerId() === rightLineMarker.playerId() &&
-            leftLineMarker.playerId() === bottomLineMarker.playerId()
-        );
+    _marks() {
+        return [
+            this._topLeftDot.leftLineMark(),
+            this._topLeftDot.topLineMark(),
+            this._topRightDot.leftLineMark(),
+            this._bottomLeftDot.topLineMark()
+        ].filter((mark) => mark !== null);
+    }
+
+    _lastMark(marks) {
+        return marks.reduce((mark1, mark2) => {
+            return (mark1.markId() > mark2.markId()) ? mark1 : mark2;
+        });
     }
 }
