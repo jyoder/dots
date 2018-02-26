@@ -1,8 +1,8 @@
 import React from 'react';
 import Game from 'state/Game';
 import Player from 'state/Player';
-import BoardView from 'ui/BoardView';
-import ScoreBoardView from 'ui/ScoreBoardView';
+import BoardView from 'ui/game/BoardView';
+import ScoreBoardView from 'ui/game/ScoreBoardView';
 
 class App extends React.Component {
   render() {

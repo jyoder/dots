@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 
-import PlayerToken from 'ui/PlayerToken';
+import PlayerToken from 'ui/game/PlayerToken';
 
-import 'ui/ScoreBoardView.css';
+import 'ui/game/ScoreBoardView.css';
 
 export default class ScoreBoardView extends React.Component {
     render() {

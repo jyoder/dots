@@ -1,8 +1,8 @@
-import ScoreBoardView from 'ui/ScoreBoardView';
+import ScoreBoardView from 'ui/game/ScoreBoardView';
 import Game from 'state/Game';
 import Player from 'state/Player';
 
-import PlayerToken from 'ui/PlayerToken';
+import PlayerToken from 'ui/game/PlayerToken';
 
 import React from 'react';
 import { shallow } from 'enzyme';

@@ -1,4 +1,4 @@
-@import '~ui/PlayerColors.css';
+@import '~ui/game/PlayerColors.css';
 
 .DotView {
     --size: 40px;

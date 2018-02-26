@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DotView from 'ui/DotView';
-import DotClickHandler from 'ui/DotClickHandler';
-import PlayerToken from 'ui/PlayerToken';
-import PlayerTokenSlug from 'ui/PlayerTokenSlug';
+import DotView from 'ui/game/DotView';
+import DotClickHandler from 'ui/game/DotClickHandler';
+import PlayerToken from 'ui/game/PlayerToken';
+import PlayerTokenSlug from 'ui/game/PlayerTokenSlug';
 
-import 'ui/BoardView.css';
+import 'ui/game/BoardView.css';
 
 export default class BoardView extends React.Component {
     render() {

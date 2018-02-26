@@ -1,4 +1,4 @@
-import PlayerSlug from 'ui/PlayerTokenSlug';
+import PlayerSlug from 'ui/game/PlayerTokenSlug';
 
 import React from 'react';
 import { shallow } from 'enzyme';

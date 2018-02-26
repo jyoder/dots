@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'ui/DotView.css';
+import 'ui/game/DotView.css';
 
 export default class DotView extends React.Component {
     static LINE_WIDTH = 8;

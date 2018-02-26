@@ -1,5 +1,5 @@
-import DotView from 'ui/DotView';
-import PlayerTokenSlug from 'ui/PlayerTokenSlug';
+import DotView from 'ui/game/DotView';
+import PlayerTokenSlug from 'ui/game/PlayerTokenSlug';
 
 import Dot from 'state/Dot';
 import Player from 'state/Player';

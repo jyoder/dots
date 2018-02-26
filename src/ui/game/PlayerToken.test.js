@@ -1,4 +1,4 @@
-import PlayerToken from 'ui/PlayerToken';
+import PlayerToken from 'ui/game/PlayerToken';
 import Player from 'state/Player';
 
 import React from 'react';

@@ -1,4 +1,4 @@
-@import '~ui/PlayerColors.css';
+@import '~ui/game/PlayerColors.css';
 
 .PlayerToken {
     --size: 25px;

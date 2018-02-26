@@ -1,4 +1,4 @@
-import DotClickHandler from 'ui/DotClickHandler';
+import DotClickHandler from 'ui/game/DotClickHandler';
 import Dot from 'state/Dot';
 
 describe('handleClick', () => {
