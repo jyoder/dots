@@ -19,7 +19,7 @@ export default class BoardView extends React.Component {
 
     _rows() {
         const rows = [];
-        for(let y = 0; y < this.props.board.height(); y++) {
+        for(let y = 0; y < this.props.game.height(); y++) {
             rows.push(this._row(y));
         }
         return rows;
@@ -27,7 +27,7 @@ export default class BoardView extends React.Component {
 
     _row(y) {
         const dotViews = [];
-        for(let x = 0; x < this.props.board.width(); x++) {
+        for(let x = 0; x < this.props.game.width(); x++) {
             dotViews.push(this._dotView(x, y));
         }
         return(
@@ -38,8 +38,8 @@ export default class BoardView extends React.Component {
     }
 
     _dotView(x, y) {
-        const dot = this.props.board.dotAt(x, y);
-        const owner = this.props.board.ownerAt(x, y);
+        const dot = this.props.game.dotAt(x, y);
+        const owner = this.props.game.ownerAt(x, y);
         const dotClickHandler = this._dotClickHandler(dot, x, y);
         
         return(
@@ -68,6 +68,6 @@ export default class BoardView extends React.Component {
 }
 
 BoardView.propTypes = {
-    board: PropTypes.object.isRequired,
+    game: PropTypes.object.isRequired,
     clickHandler: PropTypes.func.isRequired
 }
