@@ -1,14 +1,18 @@
 import React from 'react';
-import Board from 'state/Board';
+import Game from 'state/Game';
+import Player from 'state/Player';
 import BoardView from 'ui/BoardView';
+import ScoreBoardView from 'ui/ScoreBoardView';
 
 class App extends React.Component {
   render() {
-    const board = Board.create(10, 10);
+    const players = [new Player('1', 1, 'john'), new Player('2', 2, 'Hillary yoder')];
+    const game = Game.create(4, 4, players);
 
     return (
       <div className="App">
-        <BoardView board={board} clickHandler={this._handleClick.bind(this)}/>
+        <BoardView game={game} clickHandler={this._handleClick.bind(this)}/>
+        <ScoreBoardView game={game}/>
       </div>
     );
   }
