@@ -1,5 +1,5 @@
 import React from 'react';
-import 'ui/game/PlayerToken.css';
+import 'ui/base/PlayerToken.css';
 
 export default class PlayerSlug extends React.Component {
     render() {

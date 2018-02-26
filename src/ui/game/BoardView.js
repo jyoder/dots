@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import DotView from 'ui/game/DotView';
 import DotClickHandler from 'ui/game/DotClickHandler';
-import PlayerToken from 'ui/game/PlayerToken';
-import PlayerTokenSlug from 'ui/game/PlayerTokenSlug';
+import PlayerToken from 'ui/base/PlayerToken';
+import PlayerTokenSlug from 'ui/base/PlayerTokenSlug';
 
 import 'ui/game/BoardView.css';
 

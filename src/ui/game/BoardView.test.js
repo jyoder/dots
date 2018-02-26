@@ -1,7 +1,7 @@
 import BoardView from 'ui/game/BoardView';
 import DotView from 'ui/game/DotView';
-import PlayerToken from 'ui/game/PlayerToken';
-import PlayerTokenSlug from 'ui/game/PlayerTokenSlug';
+import PlayerToken from 'ui/base/PlayerToken';
+import PlayerTokenSlug from 'ui/base/PlayerTokenSlug';
 
 import Game from 'state/Game';
 import Player from 'state/Player';

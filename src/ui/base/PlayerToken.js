@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'ui/game/PlayerToken.css';
+import 'ui/base/PlayerToken.css';
 
 export default class PlayerToken extends React.Component {
     render() {

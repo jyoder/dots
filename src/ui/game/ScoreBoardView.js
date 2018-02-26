@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 
-import PlayerToken from 'ui/game/PlayerToken';
+import PlayerToken from 'ui/base/PlayerToken';
 
 import 'ui/game/ScoreBoardView.css';
 
