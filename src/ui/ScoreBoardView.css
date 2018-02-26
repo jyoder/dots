@@ -1,0 +1,26 @@
+.ScoreBoardView {
+    display: inline-block;
+    color: #292f33;
+    font-size: 11pt;
+}
+
+.ScoreBoardView-row-status {
+    font-size: 14pt;
+}
+
+.ScoreBoardView-row-token {
+    padding-left: 10px;
+}
+
+.ScoreBoardView-row-name {
+    padding-left: 20px;
+    max-width: 150px;
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ScoreBoardView-row-score {
+    padding-left: 30px;
+}
