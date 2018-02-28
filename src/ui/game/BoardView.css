@@ -5,4 +5,7 @@
      * text. We eliminate the gaps by setting the font size to zero.
      */
     font-size: 0pt;
+
+    display: inline-block;
+    vertical-align: top;
 }
