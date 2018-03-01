@@ -3,6 +3,8 @@ import GameView from 'ui/game/GameView';
 import Game from 'state/Game';
 import Player from 'state/Player';
 
+import NameInputField from 'ui/lobby/NameInputField';
+
 export default class App extends React.Component {
     render() {
         const players = [new Player('1', 1, 'john'), new Player('2', 2, 'Hillary yoder')];
@@ -11,7 +13,12 @@ export default class App extends React.Component {
         return (
             <div className="App">
                 <GameView game={game}/>
+                <NameInputField onNameSubmitted={this._onNameSubmitted.bind(this)}/>
             </div>
         );
+    }
+
+    _onNameSubmitted() {
+        
     }
 }
