@@ -10,7 +10,7 @@ import 'ui/game/ScoreBoardView.css';
 export default class ScoreBoardView extends React.Component {
     render() {
         return(
-            <Table className="ScoreBoardView">
+            <Table className="ScoreBoardView borderless">
                 <tbody>
                     {this._rows()}
                 </tbody>
