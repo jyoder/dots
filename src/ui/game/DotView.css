@@ -9,6 +9,7 @@
     width: var(--size);
     height: var(--size);
     color: #edf2f7;
+    box-sizing: content-box;
     border-left-width: var(--lineWidth);
     border-top-width: var(--lineWidth);
     
