@@ -4,6 +4,7 @@ import Game from 'state/Game';
 import Player from 'state/Player';
 
 import NameInputField from 'ui/lobby/NameInputField';
+import JoinUrlField from 'ui/lobby/JoinUrlField';
 
 export default class App extends React.Component {
     render() {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
             <div className="App">
                 <GameView game={game}/>
                 <NameInputField onNameSubmitted={this._onNameSubmitted.bind(this)}/>
+                <JoinUrlField url={'abc'}/>
             </div>
         );
     }
