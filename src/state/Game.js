@@ -3,9 +3,9 @@ import ScoreBoard from 'state/ScoreBoard';
 import Player from 'state/Player';
 
 export default class Game {
-    static create(width, height, players) {
+    static create(width, height) {
         const board = Board.create(width, height);
-        return new Game(board, players, 0, new ScoreBoard(board, players));
+        return new Game(board, [], 0, new ScoreBoard(board, []));
     }
 
     constructor(board, players, activePlayerIndex, scoreBoard) {

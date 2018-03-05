@@ -24,8 +24,8 @@ test('BoardView renders dot views according to the dimensions of the given board
 });
 
 test('BoardView renders a player token slug for a dot that is not owned by a player', () => {
-    const player = new Player('1', 1, 'Gertrude');
-    const game = Game.create(2, 3, [player])
+    const game = Game.create(2, 3)
+        .addPlayer('id1', 'player1')
         .markLeftLine(0, 0)
         .markTopLine(0, 0)
         .markLeftLine(1, 0)
@@ -36,8 +36,8 @@ test('BoardView renders a player token slug for a dot that is not owned by a pla
 });
 
 test('BoardView renders a player token for a dot that is owned by a player', () => {
-    const player = new Player('1', 1, 'Gertrude');
-    const game = Game.create(2, 3, [player])
+    const game = Game.create(2, 3)
+        .addPlayer('id1', 'player1')
         .markLeftLine(0, 0)
         .markTopLine(0, 0)
         .markLeftLine(1, 0)
