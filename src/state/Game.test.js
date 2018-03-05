@@ -27,6 +27,7 @@ describe('constructor', () => {
         const game = new Game(board, players, 1, scoreBoard);
         expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
+        expect(game.players().length).toBe(2);
         expect(game.activePlayer()).toBe(player2);
         expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
     });
@@ -46,11 +47,28 @@ describe('height', () => {
     });
 });
 
+describe('players', () => {
+    it('returns set of players in the game', () => {
+        const game = Game.create(3, 3, [])
+            .addPlayer('id1', 'John')
+            .addPlayer('id2', 'Hillary');
+
+        expect(game.players().length).toBe(2);
+        expect(game.players()[0].playerId()).toBe('id1');
+        expect(game.players()[1].playerId()).toBe('id2');
+    });
+});
+
 describe('activePlayer', () => {
     it('returns the active player specified in the constructor', () => {
         const game = new Game({}, ['player1', 'player2'], 1, null);
         expect(game.activePlayer()).toBe('player2');
     });
+
+    it('returns null if there are no players in the game', () => {
+        const game = Game.create(2, 2, []);
+        expect(game.activePlayer()).toBeNull();
+    })
 });
 
 describe('dotAt', () => {
@@ -79,6 +97,47 @@ describe('ownerAt', () => {
             .markTopLine(1, 2);
         
         expect(game.ownerAt(1, 1)).toBe(player);
+    });
+});
+
+describe('addPlayer', () => {
+    it('returns a new game which includes the specified player', () => {
+        const game = Game.create(3, 3, []).addPlayer('id1', 'John');
+    
+        expect(game.players().length).toBe(1);
+        expect(game.players()[0].playerId()).toBe('id1');
+        expect(game.players()[0].playerIndex()).toBe(0);
+        expect(game.players()[0].playerName()).toBe('John');
+    });
+
+    it('increments the player index for each player added in succession', () => {
+        const game = Game.create(3, 3, [])
+            .addPlayer('id1', 'John')
+            .addPlayer('id2', 'Bill');
+    
+        expect(game.players()[0].playerIndex()).toBe(0);
+        expect(game.players()[1].playerIndex()).toBe(1);
+    });
+
+    it('preserves the active player', () => {
+        const game = Game.create(3, 3, [])
+            .addPlayer('id1', 'John')
+            .addPlayer('id2', 'Bill')
+            .markTopLine(0, 0)
+            .addPlayer('id3', 'Gordon');
+    
+        expect(game.players()[1]).toBe(game.activePlayer());
+    });
+
+    it('reflects the new player in the scores', () => {
+        const game = Game.create(3, 3, [])
+            .addPlayer('id1', 'John')
+            .addPlayer('id2', 'Bill');
+    
+        const keys = Array.from(game.scores().keys());
+        expect(keys.length).toBe(2);
+        expect(keys[0].playerId()).toBe('id1');
+        expect(keys[1].playerId()).toBe('id2');
     });
 });
 
@@ -111,6 +170,11 @@ describe('markTopLine', () => {
         expect(nextGame.dotAt(2, 1).topLineMark().player()).toEqual('player');
     });
 
+    it('returns null if no players have been added to the game', () => {
+        const game = Game.create(3, 3, []).markTopLine(2, 1);
+        expect(game).toBeNull();
+    });
+
     it('returns null if the specified line has already been drawn', () => {
         const game = Game.create(3, 3, ['player']).markTopLine(2, 1);
         expect(game.markTopLine(2, 1)).toBeNull();
@@ -133,6 +197,7 @@ describe('markTopLine', () => {
             
         expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
+        expect(game.players().length).toBe(2);
         expect(game.activePlayer()).toBe(player1);
         expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
     });
@@ -167,6 +232,11 @@ describe('markLeftLine', () => {
         expect(nextGame.dotAt(2, 1).leftLineMark().player()).toEqual('player');
     });
 
+    it('returns null if no players have been added to the game', () => {
+        const game = Game.create(3, 3, []).markLeftLine(2, 1);
+        expect(game).toBeNull();
+    });
+
     it('returns null if the specified line has already been drawn', () => {
         const game = Game.create(3, 3, ['player']).markLeftLine(2, 1);
         expect(game.markLeftLine(2, 1)).toBeNull();
@@ -189,6 +259,7 @@ describe('markLeftLine', () => {
         
             expect(game.width()).toBe(2);
         expect(game.height()).toBe(3);
+        expect(game.players().length).toBe(2);
         expect(game.activePlayer()).toBe(player1);
         expect(game.scores()).toEqual(new Map([[player1, 0], [player2, 0]]));
     });
