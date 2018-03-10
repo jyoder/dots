@@ -2,15 +2,18 @@ import Board from 'state/Board';
 import ScoreBoard from 'state/ScoreBoard';
 import Player from 'state/Player';
 
+const MIN_PLAYERS = 2;
+
 export default class Game {
     static create(width, height) {
         const board = Board.create(width, height);
-        return new Game(board, [], 0, new ScoreBoard(board, []));
+        return new Game(board, [], false, 0, new ScoreBoard(board, []));
     }
 
-    constructor(board, players, activePlayerIndex, scoreBoard) {
+    constructor(board, players, started, activePlayerIndex, scoreBoard) {
         this._board = board;
         this._players = players;
+        this._started = started;
         this._activePlayerIndex = activePlayerIndex;
         this._scoreBoard = scoreBoard;
     }
@@ -25,6 +28,10 @@ export default class Game {
 
     players() {
         return this._players;
+    }
+
+    started() {
+        return this._started;
     }
 
     activePlayer() {
@@ -45,8 +52,22 @@ export default class Game {
         return this._gameWithPlayers(players);
     }
 
+    start() {
+        if(!this._started && this._players.length >= MIN_PLAYERS) {
+            return new Game(
+                this._board,
+                this._players,
+                true,
+                this._activePlayerIndex,
+                this._scoreBoard
+            );
+        } else {
+            return null;
+        }
+    }
+
     markTopLine(x, y) {
-        if(this._hasPlayers() && !this.dotAt(x, y).topLineMark()) {
+        if(this._started && !this.dotAt(x, y).topLineMark()) {
             const board = this._board.markTopLine(this.activePlayer(), x, y);
             return this._gameWithBoard(board);
         } else {
@@ -55,7 +76,7 @@ export default class Game {
     }
 
     markLeftLine(x, y) {
-        if(this._hasPlayers() && !this.dotAt(x, y).leftLineMark()) {
+        if(this._started && !this.dotAt(x, y).leftLineMark()) {
             const board = this._board.markLeftLine(this.activePlayer(), x, y);
             return this._gameWithBoard(board);
         } else {
@@ -75,6 +96,7 @@ export default class Game {
         return new Game(
             this._board,
             players,
+            this._started,
             this._activePlayerIndex,
             new ScoreBoard(this._board, players)
         );
@@ -84,8 +106,10 @@ export default class Game {
         return new Game(
             board,
             this._players,
+            this._started,
             this._nextActivePlayerIndex(),
-            this._scoreBoard);
+            new ScoreBoard(board, this._players)
+        );
     }
 
     _nextActivePlayerIndex() {

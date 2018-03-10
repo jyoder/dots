@@ -4,14 +4,12 @@ import PlayerToken from 'ui/base/PlayerToken';
 import PlayerTokenSlug from 'ui/base/PlayerTokenSlug';
 
 import Game from 'state/Game';
-import Player from 'state/Player';
 
 import React from 'react';
 import { shallow } from 'enzyme';
 
 test('BoardView renders dot views according to the dimensions of the given board', () => {
-    const player = new Player('1', 1, 'Gertrude');
-    const boardView = shallow(<BoardView game={Game.create(2, 3, [player])} clickHandler={() => {}}/>);
+    const boardView = shallow(<BoardView game={Game.create(2, 3)} clickHandler={() => {}}/>);
     expect(boardView.find('.BoardView-row--0').exists()).toBeTruthy();
     expect(boardView.find('.BoardView-row--1').exists()).toBeTruthy();
     expect(boardView.find('.BoardView-row--2').exists()).toBeTruthy();
@@ -26,6 +24,8 @@ test('BoardView renders dot views according to the dimensions of the given board
 test('BoardView renders a player token slug for a dot that is not owned by a player', () => {
     const game = Game.create(2, 3)
         .addPlayer('id1', 'player1')
+        .addPlayer('id2', 'player2')
+        .start()
         .markLeftLine(0, 0)
         .markTopLine(0, 0)
         .markLeftLine(1, 0)
@@ -38,6 +38,8 @@ test('BoardView renders a player token slug for a dot that is not owned by a pla
 test('BoardView renders a player token for a dot that is owned by a player', () => {
     const game = Game.create(2, 3)
         .addPlayer('id1', 'player1')
+        .addPlayer('id2', 'player2')
+        .start()
         .markLeftLine(0, 0)
         .markTopLine(0, 0)
         .markLeftLine(1, 0)
@@ -48,11 +50,15 @@ test('BoardView renders a player token for a dot that is owned by a player', () 
 });
 
 test('BoardView binds the click handler once for each line that can be clicked', () => {
-    const player = new Player('1', 1, 'Gertrude');
+    const game = Game.create(1, 2)
+        .addPlayer('id1', 'player1')
+        .addPlayer('id2', 'player2')
+        .start();
+        
     const clickHandler = jest.fn();
     clickHandler.bind = jest.fn();
 
-    const boardView = shallow(<BoardView game={Game.create(1, 2, [player])} clickHandler={clickHandler}/>);
+    const boardView = shallow(<BoardView game={Game.create(1, 2)} clickHandler={clickHandler}/>);
     expect(clickHandler.bind).toHaveBeenCalledTimes(4);
     expect(clickHandler.bind).toHaveBeenCalledWith(null, 'left', 0, 0);
     expect(clickHandler.bind).toHaveBeenCalledWith(null, 'top', 0, 0);
