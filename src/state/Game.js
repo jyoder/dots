@@ -48,7 +48,9 @@ export default class Game {
 
     addPlayer(id, name) {
         const players = this._players.slice();
-        players.push(new Player(id, this._players.length, name));
+        if(!this._hasPlayer(id)) {
+            players.push(new Player(id, this._players.length, name));
+        }
         return this._gameWithPlayers(players);
     }
 
@@ -86,6 +88,10 @@ export default class Game {
 
     scores() {
         return this._scoreBoard.scores();
+    }
+
+    _hasPlayer(playerId) {
+        return this._players.find((player) => player.playerId() === playerId);
     }
 
     _hasPlayers() {

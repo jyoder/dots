@@ -129,6 +129,14 @@ describe('addPlayer', () => {
         expect(game.players()[0].playerName()).toBe('John');
     });
 
+    it('allows players with duplicate player ids but ignores them', () => {
+        const game = Game.create(3, 3)
+            .addPlayer('id1', 'John')
+            .addPlayer('id1', 'John2');
+
+        expect(game.players().length).toBe(1);
+    });
+
     it('increments the player index for each player added in succession', () => {
         const game = Game.create(3, 3)
             .addPlayer('id1', 'John')
