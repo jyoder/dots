@@ -125,7 +125,7 @@ describe('addPlayer', () => {
     
         expect(game.players().length).toBe(1);
         expect(game.players()[0].playerId()).toBe('id1');
-        expect(game.players()[0].playerIndex()).toBe(0);
+        expect(game.players()[0].playerIndex()).toBe(1);
         expect(game.players()[0].playerName()).toBe('John');
     });
 
@@ -142,8 +142,8 @@ describe('addPlayer', () => {
             .addPlayer('id1', 'John')
             .addPlayer('id2', 'Bill');
     
-        expect(game.players()[0].playerIndex()).toBe(0);
-        expect(game.players()[1].playerIndex()).toBe(1);
+        expect(game.players()[0].playerIndex()).toBe(1);
+        expect(game.players()[1].playerIndex()).toBe(2);
     });
 
     it('preserves the active player', () => {

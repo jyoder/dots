@@ -49,7 +49,7 @@ export default class Game {
     addPlayer(id, name) {
         const players = this._players.slice();
         if(!this._hasPlayer(id)) {
-            players.push(new Player(id, this._players.length, name));
+            players.push(new Player(id, this._players.length + 1, name));
         }
         return this._gameWithPlayers(players);
     }
