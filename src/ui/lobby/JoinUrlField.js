@@ -20,7 +20,7 @@ export default class JoinUrlField extends React.Component {
                     onChange={function() {}}
                 />
                 <InputGroupButton>
-                    <CopyToClipboard text={this.props.text}>
+                    <CopyToClipboard text={this.props.url}>
                         <Button id='CopyButton' color='primary' onClick={this._onCopy.bind(this)}>
                             <FontAwesome name='copy'/>
                             <Tooltip
@@ -50,10 +50,7 @@ export default class JoinUrlField extends React.Component {
     }
 
     _onCopy() {
-        this.setState({
-            tooltipOpen: this.state.tooltipOpen,
-            contentCopied: true
-        });
+        this.setState({ contentCopied: true });
     }
 }
 
