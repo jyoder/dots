@@ -8,7 +8,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 export default class JoinUrlField extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { tooltipOpen: false, contentCopied: false };
+        
+        this.state = {
+            tooltipOpen: false,
+            contentCopied: false
+        };
     }
 
     render() {
@@ -17,7 +21,7 @@ export default class JoinUrlField extends React.Component {
                 <Input
                     className='text-center'
                     value={this.props.url}
-                    onChange={function() {}}
+                    onChange={() => {}}
                 />
                 <InputGroupButton>
                     <CopyToClipboard text={this.props.url}>
